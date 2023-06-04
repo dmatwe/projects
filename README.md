@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿
 **Дипломные работы** 
 
@@ -11,3 +12,6 @@
  - [Базы данных
    (OTUS)](https://github.com/dmatwe/projects/tree/main/OTUS_BD)
 
+=======
+# projects
+>>>>>>> c9bdab3865eaea8bf466e209bb245118b19924ad
