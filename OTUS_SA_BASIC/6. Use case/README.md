@@ -1,6 +1,6 @@
 ﻿**Use Case диаграмма** 
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/6.%20Use%20case/usecase_drawio.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/6.%20Use%20case/usecase_crm_drawio.png)
 
 **Название** : Создать заказ-наряд
 
