@@ -1,6 +1,7 @@
 1. Создать yaml с содержимым:
 
 version: '3.5'
+
 services:
   postgres:
     container_name: otus_bd_postgres_container
