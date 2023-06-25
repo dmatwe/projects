@@ -1,6 +1,6 @@
 1. Создать yaml с содержимым:
-version: '3.5'
 
+version: '3.5'
 services:
   postgres:
     container_name: otus_bd_postgres_container
@@ -15,8 +15,7 @@ services:
       - "5433:5432"
     networks:
       - postgres
-    restart: unless-stopped
-  
+    restart: unless-stopped  
   pgadmin:
     container_name: otus_bd_pgadmin_container
     image: dpage/pgadmin4
@@ -32,14 +31,13 @@ services:
     networks:
       - postgres
     restart: unless-stopped
-
 networks:
   postgres:
     driver: bridge
-
 volumes:
     postgres:
     pgadmin:
+
 2. находясь в дирриктории с docker-compose файлом выполнить команду docker-compose up 
 3. авторизоваться по адрессу http://localhost
 4. остановить контейнер можно командой docker-compose down
