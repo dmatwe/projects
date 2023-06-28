@@ -6,8 +6,7 @@
    (OTUS)](https://github.com/dmatwe/projects/tree/main/OTUS_BD)
 
 
-**Дипломные работы** 
+**Дипломные работы РАНХиГС факультета бизнес-информатики** 
 
- - [Выпускная квалификационная работа
-   бакалавриат](https://github.com/dmatwe/projects/tree/main/%D0%92%D0%9A%D0%A0_%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81_%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/%D0%92%D0%9A%D0%A0_%D0%B1%D0%B0%D0%BA%D0%B0%D0%BB%D0%B0%D0%B2%D1%80%D0%B8%D0%B0%D1%82)
-
+ - [ВКР бакалавриат](https://github.com/dmatwe/projects/tree/main/ВКР_бизнес_аналитика/ВКР_бакалавриат)
+ - [ВКР магистратура](https://github.com/dmatwe/projects/tree/main/ВКР_бизнес_аналитика/ВКР_магистратура)
