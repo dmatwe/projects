@@ -136,7 +136,7 @@
 | dim_employee      | work_location_id:storage_id  | dim_storage       | 1:1       |
 | dim_employee      | work_location_id:workshop_id | dim_workshop      | 1:1       |
 
-***EPC бизнес процессов «Оформление авто»:**
+**EPC бизнес процессов «Оформление авто»:**
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/5.%20eEPC_%20BPMN_%20Activity_Diagram/EPC_%D0%BE%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B0%D0%B2%D1%82%D0%BE.png)
 
@@ -321,3 +321,20 @@
 10.1. Клиенту не подходят доступные даты и он отказывается от услуг
 
     10.1.1 Мастер инициирует сценарий работа с отказами.
+
+
+**Dialog flow** 
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/7.%20Dialog%20Flow%20%2B%20Screen%20Flow/Карта%20диалогов.png)
+
+**Контактные данные клиента** 
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/7.%20Dialog%20Flow%20%2B%20Screen%20Flow/Контактные%20данные%20клиента.png)
+
+**Форма выбора марки и модели авто** 
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/7.%20Dialog%20Flow%20%2B%20Screen%20Flow/Форма%20выбора%20марки%20и%20модели.png)
+
+**Форма ввода данных авто** 
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/7.%20Dialog%20Flow%20%2B%20Screen%20Flow/Форма%20ввода%20данных%20авто.png)
