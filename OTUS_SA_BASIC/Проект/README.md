@@ -325,14 +325,117 @@
 
  - [Miro (полная версия)](https://miro.com/app/board/uXjVM7LwBGg=/?share_link_id=579873918829)
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/8.%20User%20Story/User%20Story.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/Проект/usmiro.png)
 
 **Backlog** 
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/8.%20User%20Story/backlog1.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/Проект/bl1.png)
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/8.%20User%20Story/backlog2.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/Проект/bl3.png)
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/8.%20User%20Story/backlog3.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/Проект/bl4.png)
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/8.%20User%20Story/backlog4.png)
+
+**Диаграмма: классов**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/9.%20Диаграмма%20классов/ооп.drawio.png)
+
+**Описание сущностей**
+
+| Сущность       | Наименование                                                                                    |
+| -------------- | ----------------------------------------------------------------------------------------------- |
+| client         | Клиент                                                                                          |
+| Атрибуты       | Наименование                                                                                    |
+| client_id      | Идентификатор клиента                                                                           |
+| FIO            | ФИО клиента                                                                                     |
+| driver_number  | номер вод. Удостоверения                                                                        |
+| tel            | номер телефона                                                                                  |
+| Методы         | Зарегистрировать клиента<br>Изменить данные клиента                                             |
+| Сущность       | Наименование                                                                                    |
+| Auto           | автомобиль клиента                                                                              |
+| Атрибуты       | Наименование                                                                                    |
+| auto_id        | Идентификатор авто                                                                              |
+| client_id      | Идентификатор клиента                                                                           |
+| reg_number     | рег. Номер                                                                                      |
+|  VIN           | ВИН                                                                                             |
+| Методы         | Закрепить авто за клиентом<br>Изменить данные авто                                              |
+| Сущность       | Наименование                                                                                    |
+| appointment    | Записи                                                                                          |
+| Атрибуты       | Наименование                                                                                    |
+| appointment_id | Идентификатор записи                                                                            |
+| client_id      | Идентификатор клиента                                                                           |
+| STO_id         | Идентификатор СТО                                                                               |
+| date           | Дата записи                                                                                     |
+| comment        | Комментарий                                                                                     |
+| status         | Статус записи                                                                                   |
+| Методы         | Записать клиента на прием<br>Описать первичную проблему<br>Отменить запись                      |
+| Сущность       | Наименование                                                                                    |
+| STO            | Справочник СТО                                                                                  |
+| Атрибуты       | Наименование                                                                                    |
+| STO_id         | Идентификатор СТО                                                                               |
+| address        | Адрес СТО                                                                                       |
+| tel            | Телефон СТО                                                                                     |
+| Методы         | Зарегистрировать новое СТО<br>Изменить данные СТО                                               |
+| Сущность       | Наименование                                                                                    |
+| order          | Заказ наряд                                                                                     |
+| Атрибуты       | Наименование                                                                                    |
+| order_id       | Идентификатор заказ наряд                                                                       |
+| auto_id        | Идентификатор авто                                                                              |
+| STO_id         | Идентификатор СТО                                                                               |
+| master_id      | Идентификатор Мастера                                                                           |
+| date           | Дата заказа наряд                                                                               |
+| status         | Статус заказ наряд                                                                              |
+| Методы         | Создать заказ наряд<br>Выбрать мастера для ремонта<br>Изменить статус заказ наряд               |
+| Сущность       | Наименование                                                                                    |
+| master         | Справочник мастеров                                                                             |
+| Атрибуты       | Наименование                                                                                    |
+| master_id      | Идентификатор Мастера                                                                           |
+| FIO            | ФИО мастера                                                                                     |
+| STO_id         | Идентификатор СТО                                                                               |
+| type           | Тип мастера                                                                                     |
+| Методы         | Зарегистрировать нового мастера<br>Изменить данные мастера                                      |
+| Сущность       | Наименование                                                                                    |
+| master_works   | Справочник работ, которые мастер прводит                                                        |
+| Атрибуты       | Наименование                                                                                    |
+| master_id      | Идентификатор Мастера                                                                           |
+| work_type_id   | Идентификатор работ                                                                             |
+| Методы         | Добавить работы которые мастер может проводить<br>Удалить работы которые мастер может проводить |
+| Сущность       | Наименование                                                                                    |
+| works          | Справочник работ                                                                                |
+| Атрибуты       | Наименование                                                                                    |
+| work_type_id   | Идентификатор работ                                                                             |
+| work_type_name | Наименование работ                                                                              |
+| Методы         | Добавить работы<br>Изменить работы                                                              |
+| Сущность       | Наименование                                                                                    |
+| order_works    | Работы заказ наряд                                                                              |
+| Атрибуты       | Наименование                                                                                    |
+| order_id       | Идентификатор заказ наряд                                                                       |
+| work_type_id   | Идентификатор работ                                                                             |
+| Методы         | Добавить работы в заказ наряд<br>Удалить работы из заказ наряд                                  |
+
+
+**Связи**
+
+| Сущность 1   | Ключ Связи   | Сущность 2   | Вид связи |
+| ------------ | ------------ | ------------ | --------- |
+| auto         | client_id    | client       | м:1       |
+|              | auto_id      | order        | 1:м       |
+| client       | client_id    | auto         | 1:м       |
+|              | client_id    | appointment  | 1:м       |
+| appointment  | client_id    | client       | м:1       |
+|              | STO_id       | STO          | м:1       |
+| STO          | STO_id       | appointment  | 1:м       |
+|              | STO_id       | order        | 1:м       |
+| order        | STO_id       | STO          | м:1       |
+|              | auto_id      | auto         | м:1       |
+|              | master_id    | master       | м:1       |
+|              | order_id     | order_works  | 1:м       |
+| master       | master_id    | order        | 1:м       |
+|              | master_id    | master_works | 1:м       |
+| master_works | master_id    | master       | м:1       |
+|              | work_type_id | works        | м:1       |
+| works        | work_type_id | master_works | 1:м       |
+|              | work_type_id | order_works  | 1:м       |
+| order_works  | work_type_id | works        | м:1       |
+|              | order_id     | order        | м:1       |
+
