@@ -1,6 +1,6 @@
 ﻿**Диаграмма: классов**
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/9.%20Диаграмма%20классов/ооп.drawio.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/9.%20Диаграмма%20классов/ооп.png)
 
 **Описание сущностей**
 
@@ -46,6 +46,7 @@
 | STO_id         | Идентификатор СТО                                                                               |
 | master_id      | Идентификатор Мастера                                                                           |
 | date           | Дата заказа наряд                                                                               |
+| appointment_id | Идентификатор записи                                                                            |
 | status         | Статус заказ наряд                                                                              |
 | Методы         | Создать заказ наряд<br>Выбрать мастера для ремонта<br>Изменить статус заказ наряд               |
 | Сущность       | Наименование                                                                                    |
@@ -75,29 +76,32 @@
 | work_type_id   | Идентификатор работ                                                                             |
 | Методы         | Добавить работы в заказ наряд<br>Удалить работы из заказ наряд                                  |
 
-
 **Связи**
 
-| Сущность 1   | Ключ Связи   | Сущность 2   | Вид связи |
-| ------------ | ------------ | ------------ | --------- |
-| auto         | client_id    | client       | м:1       |
-|              | auto_id      | order        | 1:м       |
-| client       | client_id    | auto         | 1:м       |
-|              | client_id    | appointment  | 1:м       |
-| appointment  | client_id    | client       | м:1       |
-|              | STO_id       | STO          | м:1       |
-| STO          | STO_id       | appointment  | 1:м       |
-|              | STO_id       | order        | 1:м       |
-| order        | STO_id       | STO          | м:1       |
-|              | auto_id      | auto         | м:1       |
-|              | master_id    | master       | м:1       |
-|              | order_id     | order_works  | 1:м       |
-| master       | master_id    | order        | 1:м       |
-|              | master_id    | master_works | 1:м       |
-| master_works | master_id    | master       | м:1       |
-|              | work_type_id | works        | м:1       |
-| works        | work_type_id | master_works | 1:м       |
-|              | work_type_id | order_works  | 1:м       |
-| order_works  | work_type_id | works        | м:1       |
-|              | order_id     | order        | м:1       |
+| Сущность 1   | Ключ Связи     | Сущность 2   | Вид связи |
+| ------------ | -------------- | ------------ | --------- |
+| auto         | client_id      | client       | м:1       |
+|              | auto_id        | order        | 1:м       |
+| client       | client_id      | auto         | 1:м       |
+|              | client_id      | appointment  | 1:м       |
+| appointment  | client_id      | client       | м:1       |
+|              | appointment_id | order        | 1:1       |
+|              | STO_id         | STO          | м:1       |
+| STO          | STO_id         | appointment  | 1:м       |
+|              | STO_id         | master       | 1:1       |
+|              | STO_id         | order        | 1:м       |
+| order        | STO_id         | STO          | м:1       |
+|              | auto_id        | auto         | м:1       |
+|              | master_id      | master       | м:1       |
+|              | appointment_id | appointment  | 1:1       |
+|              | order_id       | order_works  | 1:м       |
+| master       | master_id      | order        | 1:м       |
+|              | STO_id         | STO          | 1:1       |
+|              | master_id      | master_works | 1:м       |
+| master_works | master_id      | master       | м:1       |
+|              | work_type_id   | works        | м:1       |
+| works        | work_type_id   | master_works | 1:м       |
+|              | work_type_id   | order_works  | 1:м       |
+| order_works  | work_type_id   | works        | м:1       |
+|              | order_id       | order        | м:1       |
 
