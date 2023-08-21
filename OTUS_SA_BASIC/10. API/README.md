@@ -24,18 +24,16 @@
 ]
 ```
 
-
 ***Код 400***
 
 Некорректный запрос
 
+```json
 {
-
   "code": string,
-
   "message": string
-
 }
+```
 
 **Просмотр информации по конкретному запросу от СТО**
 
@@ -43,39 +41,41 @@
 
 ***Код 200***
 
+```json
 {
-
   "request_id": integer,
   "sto_id": integer,
   "items": 
-
   {
-
     "item_id": integer,
     "quantity": integer
-
     },
-
   "status": 'string',
   "timestamp": integer
-
   }
+  ```
 
 ***Код 400***
 
 Некорректный запрос
+
+```json
 {
   "code": string,
   "message": string
 }
+```
 
 ***Код 404***
 
 Заявка не найдена
+
+```json
 {
   "code": string,
   "message": string
 }
+```
 
 **Изменить статус заяаки**
 
@@ -83,11 +83,13 @@
 
 ***Тело запроса***
 
+```json
 {
   "request_id": string,
   "status": 'string',
   "timestamp": integer
 }
+```
 
 ***Код 200***
 
@@ -96,18 +98,25 @@
 ***Код 400***
 
 Некорректный запрос
+
+```json
 {
   "code": string,
   "message": string
 }
+```
+
 
 ***Код 404***
 
 Заявка не найдена
+
+```json
 {
   "code": string,
   "message": string
 }
+```
 
 **Оформить доставку ЗЧ в СТО**
 
@@ -120,18 +129,24 @@
 ***Код 400***
 
 Некорректный запрос
+
+```json
 {
   "code": string,
   "message": string
 }
+```
 
 ***Код 404***
 
 Заявка не найдена
+
+```json
 {
   "code": string,
   "message": string
 }
+```
 
 
 **Узнать статус отправления (обновить статус)**
@@ -140,28 +155,36 @@
 
 ***Код 200***
 
+```json
 {
   "request_id": string,
   "status": 'string',
   "timestamp": integer
 }
+```
 
 
 ***Код 400***
 
 Некорректный запрос
+
+```json
 {
   "code": string,
   "message": string
 }
+```
 
 ***Код 404***
 
 Заявка не найдена
+
+```json
 {
   "code": string,
   "message": string
 }
+```
 
 *CRM*
 
@@ -193,25 +216,33 @@
 
 ***Код 200***
 
+```json
 {
   "request_id": string,
   "status": 'string',
   "timestamp": integer
 }
+```
 
 
 ***Код 400***
 
 Некорректный запрос
+
+```json
 {
   "code": string,
   "message": string
 }
+```
 
 ***Код 404***
 
 Заявка не найдена
+
+```json
 {
   "code": string,
   "message": string
 }
+```
