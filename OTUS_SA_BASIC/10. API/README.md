@@ -6,38 +6,35 @@
 
 ***Код 200***
 
+```json
 [
   {
 
     "request_id": 'integer',
-
     "status": 'string',
-
     "timestamp": integer
-
   },
   {
-
     "request_id": 'integer',
-
     "status": 'string',
-
     "status": 'string',
-
     "timestamp": integer
-    
   }
   ...
 ]
+```
+
 
 ***Код 400***
 
 Некорректный запрос
 
 {
+
   "code": string,
 
   "message": string
+
 }
 
 **Просмотр информации по конкретному запросу от СТО**
