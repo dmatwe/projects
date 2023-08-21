@@ -14,14 +14,14 @@
 [
   {
 
-    "request_id": 'integer',
-    "status": 'string',
+    "request_id": integer,
+    "status": string,
     "timestamp": integer
   },
   {
-    "request_id": 'integer',
-    "status": 'string',
-    "status": 'string',
+    "request_id": integer,
+    "status": string,
+    "status": string,
     "timestamp": integer
   }
   ...
