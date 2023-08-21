@@ -1,3 +1,7 @@
+**Проектирование интеграционного взаимодействи**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/10.%20API/api.png)
+
 *Сотрудник склада*
 
 **Просмотр входящих запросов от СТО**
@@ -192,19 +196,19 @@
 
 `POST b2b.taxi.yandex.net/b2b/cargo/integration/v2/claims/create\?request_id={string}`
 
-- [Документация Яндекс](https://github.com/dmatwe/projects/tree/main/ВКР_бизнес_аналитика/ВКР_бакалавриат)
+- [Документация Яндекс](https://yandex.ru/dev/logistics/api/ref/basic/IntegrationV2ClaimsCreate.html)
 
 **Подтверждение заявки**
 
 `POST b2b.taxi.yandex.net/b2b/cargo/integration/v2/claims/accept\ ?claim_id={string}`
 
-- [Документация Яндекс](https://github.com/dmatwe/projects/tree/main/ВКР_бизнес_аналитика/ВКР_бакалавриат)
+- [Документация Яндекс](https://yandex.ru/dev/logistics/api/ref/basic/IntegrationV2ClaimsAccept.html)
 
 **Получение информации по заявке**
 
 `POST b2b.taxi.yandex.net/b2b/cargo/integration/v2/claims/info\?claim_id={string}`
 
-- [Документация Яндекс](https://github.com/dmatwe/projects/tree/main/ВКР_бизнес_аналитика/ВКР_бакалавриат)
+- [Документация Яндекс](https://yandex.ru/dev/logistics/api/ref/basic/IntegrationV2ClaimsInfo.html)
 
 
 
