@@ -43,17 +43,13 @@
 
 ***Код 200***
 
-{
-  "request_id": integer,
+{"request_id": integer,
   "sto_id": integer,
   "items": {
     "item_id": integer,
-    "quantity": integer
-  },
+    "quantity": integer},
   "status": 'string',
-  "timestamp": integer
-
-}
+  "timestamp": integer}
 
 ***Код 400***
 
