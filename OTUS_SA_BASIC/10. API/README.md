@@ -7,17 +7,13 @@
 ***Код 200***
 
 [
-
   {
-
     "request_id": 'integer',
 
     "status": 'string',
 
     "timestamp": integer
-
   },
-
   {
 
     "request_id": 'integer',
@@ -27,11 +23,8 @@
     "status": 'string',
 
     "timestamp": integer
-
   }
-
   ...
-
 ]
 
 ***Код 400***
@@ -39,11 +32,9 @@
 Некорректный запрос
 
 {
-
   "code": string,
 
   "message": string
-  
 }
 
 **Просмотр информации по конкретному запросу от СТО**
@@ -51,6 +42,7 @@
 `GET /warehouse/requests/{request_id}`
 
 ***Код 200***
+
 {
   "request_id": integer,
   "sto_id": integer,
