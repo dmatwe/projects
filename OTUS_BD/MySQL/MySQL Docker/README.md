@@ -14,6 +14,7 @@
  
 `SET GLOBAL innodb_buffer_pool_size = 536870912;`
 
+**Проверка**
 
 `SHOW DATABASES`
 
