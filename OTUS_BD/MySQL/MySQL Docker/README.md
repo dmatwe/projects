@@ -8,7 +8,7 @@
 
  **Создание БД в MySQL**
 
-`CREATE DATABASE example;`
+`CREATE DATABASE online_store;`
 
  **Настроить innodb_buffer_pool**
  
