@@ -210,10 +210,6 @@
 
 - [Документация Яндекс](https://yandex.ru/dev/logistics/api/ref/basic/IntegrationV2ClaimsInfo.html)
 
-
-
-*Я Доставка*
-
 **Изменения статуса заявки в CRM**
 
 `PATCH /warehouse/requests/{request_id}`
