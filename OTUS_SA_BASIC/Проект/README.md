@@ -273,3 +273,4 @@
 | order_works  | work_type_id   | works        | м:1       |
 |              | order_id       | order        | м:1       |
 
+ - [Постановка с указанием тестовых кейсов](https://docs.google.com/spreadsheets/d/1ZCr5T7T-e733ZIjcDnlVE_vUMoD7BrNEP1TSqVUYzWU/edit?usp=sharing)
