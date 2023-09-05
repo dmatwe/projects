@@ -1,0 +1,615 @@
+Введение
+========
+
+DROP TABLE IF EXISTS customers;
+
+CREATE TABLE customers (
+    customer_id SERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    gender CHAR(1) NOT NULL,
+    city VARCHAR(255)
+);
+
+SHOW CREATE TABLE customers;
+
+---
+
+DROP TABLE IF EXISTS orders;
+
+CREATE TABLE orders (
+    order_id SERIAL PRIMARY KEY,
+    customer_id BIGINT UNSIGNED NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    status VARCHAR(64) NOT NULL,
+    CONSTRAINT fk__orders__customers
+        FOREIGN KEY (customer_id)
+        REFERENCES customers (customer_id)
+);
+
+---
+
+DROP TABLE IF EXISTS line_items;
+
+CREATE TABLE line_items (
+    order_id BIGINT UNSIGNED,
+    position BIGINT UNSIGNED NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    quantity INT UNSIGNED NOT NULL,
+    PRIMARY KEY (order_id, title),
+    CONSTRAINT fk__line_items__orders
+        FOREIGN KEY (order_id)
+        REFERENCES orders (order_id),
+    CONSTRAINT un__line_items__order_id__position
+        UNIQUE (order_id, position)
+);
+
+
+
+
+
+INSERT
+======
+
+INSERT INTO customers
+    VALUES
+    (1, 'vasya@example.com', 'М', 'Москва');
+
+---
+
+INSERT INTO customers
+    (email, gender, city)
+    VALUES
+    ('lena@example.com', 'Ж', 'Москва');
+
+---
+
+SELECT LAST_INSERT_ID();
+
+---
+
+INSERT INTO orders
+    (customer_id, created_at, status)
+    VALUES
+    (1, NOW(), 'Новый');
+
+INSERT INTO line_items
+    (order_id, position, title, price, quantity)
+    VALUES
+    (LAST_INSERT_ID(), 1, 'Сервелат', 250.50, 1),
+    (LAST_INSERT_ID(), 2, 'Килька в томате', 24.00, 1),
+    (LAST_INSERT_ID(), 3, 'Пиво', 180.45, 1);
+
+---
+
+SELECT * FROM line_items
+    ORDER BY order_id, position;
+
+---
+
+INSERT INTO orders
+    (customer_id, created_at, status)
+    VALUES
+    (2, NOW(), 'Новый');
+
+SET @last_order_id = LAST_INSERT_ID();
+
+SELECT @last_order_id;
+
+INSERT INTO line_items
+    (order_id, position, title, price, quantity)
+    VALUES
+    (@last_order_id, 1, 'Сардельки', 380.00, 2),
+    (@last_order_id, 2, 'Самогон "Спотыкач"', 500.00, 1);
+
+---
+
+SELECT * FROM customers;
+
+REPLACE INTO customers (email, gender, city)
+    VALUES
+    ('dmitry@example.com', 'М', 'Камышин');
+
+SELECT * FROM customers;
+
+---
+
+REPLACE INTO customers (email, gender)
+    VALUES
+    ('dmitry@example.com', 'М');
+
+SELECT * FROM customers;
+
+---
+
+REPLACE INTO customers (email, gender, city)
+    VALUES
+    ('vasya@example.com', 'М', 'Чебоксары');
+
+---
+
+INSERT INTO line_items
+    (order_id, position, title, price, quantity)
+    VALUES
+    (1, 4, 'Сервелат', 250.50, 1);
+
+---
+
+INSERT INTO line_items
+    (order_id, position, title, price, quantity)
+    VALUES
+    (1, 4, 'Сервелат', 250.50, 1)
+    ON DUPLICATE KEY UPDATE
+    quantity = quantity + 1;
+
+SELECT * FROM line_items
+    ORDER BY order_id, position;
+
+---
+
+INSERT INTO line_items
+    (order_id, position, title, price, quantity)
+    VALUES
+    (1, 4, 'Сервелат', 250.50, 5)
+    ON DUPLICATE KEY UPDATE
+    quantity = quantity + VALUES(quantity);
+
+---
+
+INSERT INTO line_items
+    (order_id, position, title, price, quantity)
+    VALUES
+    (1, 4, 'Сервелат', 250.50, 3) AS new
+    ON DUPLICATE KEY UPDATE
+    quantity = quantity + new.quantity;
+
+---
+
+INSERT INTO line_items
+    (order_id, position, title, price, quantity)
+    VALUES
+    (1, 4, 'Сервелат', 250.50, 3) AS new
+    (order_id, position, title, price, new_quantity)
+    ON DUPLICATE KEY UPDATE
+    quantity = quantity + new_quantity;
+
+SELECT * FROM line_items
+    ORDER BY order_id, position;
+
+---
+
+INSERT INTO customers
+    (email, gender, city)
+    VALUES
+    ('dmitry@example.com', 'М', 'Зеленоград'),
+    ('vasya@example.com', 'М', 'Москва'),
+    ('olga@example.com', 'Ж', 'Волгоград');
+
+---
+
+SELECT * FROM customers;
+
+---
+
+INSERT IGNORE INTO customers
+    (email, gender, city)
+    VALUES
+    ('dmitry@example.com', 'М', 'Зеленоград'),
+    ('vasya@example.com', 'М', 'Москва'),
+    ('olga@example.com', 'Ж', 'Волгоград');
+
+---
+
+SHOW WARNINGS;
+
+---
+
+SELECT * FROM customers;
+
+---
+
+SELECT LAST_INSERT_ID();
+
+---
+
+INSERT INTO line_items
+    (order_id, position, title, price, quantity)
+    VALUES
+    (1, 4, 'Спички', '12 рублей', '2 коробки');
+
+INSERT INTO line_items
+    (order_id, position, title, price, quantity)
+    VALUES
+    (1, 5, 'Сосиски', NULL, NULL);
+
+---
+
+INSERT IGNORE INTO line_items
+    (order_id, position, title, price, quantity)
+    VALUES
+    (1, 4, 'Спички', '12 рублей', '2 коробки');
+
+INSERT IGNORE INTO line_items
+    (order_id, position, title, price, quantity)
+    VALUES
+    (1, 5, 'Сосиски', NULL, NULL);
+
+SHOW WARNINGS;
+
+SELECT * FROM line_items
+    ORDER BY order_id, position;
+
+---
+
+INSERT INTO orders
+    (customer_id, created_at, status)
+    VALUES
+    (1, NOW(), 'Новый');
+
+SET @last_order_id = LAST_INSERT_ID();
+
+SET @position = 0;
+
+SELECT * FROM orders;
+
+INSERT INTO line_items
+    (order_id, position, title, price, quantity)
+SELECT
+    @last_order_id, ROW_NUMBER() OVER (ORDER BY position), title, price, quantity
+    FROM line_items
+    WHERE order_id = 1
+    AND price > 100
+    ORDER BY position;
+
+SELECT * FROM line_items
+    ORDER BY order_id, position;
+
+---
+
+SELECT title, price, 'Пятёрочка' AS shop
+    FROM line_items;
+
+---
+
+INSERT INTO customers
+    (email, gender, city)
+    VALUES
+    ('user1@example.com', 'М', 'Санкт-Петербург'),
+    ('user2@example.com', 'М', 'Суздаль'),
+    ('user3@example.com', 'Ж', 'Казань');
+
+---
+
+INSERT INTO orders
+    (customer_id, created_at, status)
+    VALUES
+    (LAST_INSERT_ID(), NOW(), 'Новый заказ из Казани'),
+    (LAST_INSERT_ID(), NOW(), 'Новый заказ из Казани');
+
+
+
+
+
+
+
+
+UPDATE/DELETE
+=============
+
+
+UPDATE line_items
+    SET price = 99.00
+    WHERE order_id = 1
+    AND title = 'Сосиски';
+
+SELECT * FROM line_items
+    ORDER BY order_id, position;
+
+---
+
+UPDATE line_items
+    SET price = price * 0.9
+    WHERE order_id = 1
+    ORDER BY price DESC
+    LIMIT 1;
+
+SELECT * FROM line_items
+    ORDER BY order_id, position;
+
+---
+
+UPDATE line_items
+    SET position = position + 1
+    WHERE order_id = 1;
+
+---
+
+UPDATE IGNORE line_items
+    SET position = position + 1
+    WHERE order_id = 1;
+
+---
+
+SELECT * FROM line_items
+    ORDER BY order_id, position;
+
+---
+
+UPDATE line_items
+    SET position = position + 10
+    WHERE order_id = 1;
+
+SET @row_number = 0;
+
+UPDATE line_items
+    SET position = (@row_number:=@row_number + 1)
+    WHERE order_id = 1;
+
+SELECT * FROM line_items
+    ORDER BY order_id, position;
+
+---
+
+UPDATE line_items
+    SET position = position + 1
+    WHERE order_id = 1
+    ORDER BY position DESC;
+
+---
+
+DELETE FROM line_items
+    WHERE order_id = 1
+    ORDER BY position DESC
+    LIMIT 1;
+
+---
+
+UPDATE orders
+    SET status = 'Отменён'
+    WHERE order_id = 3;
+
+UPDATE line_items
+    JOIN orders USING (order_id)
+    SET line_items.quantity = 0
+    WHERE orders.status = 'Отменён';
+
+---
+
+UPDATE line_items
+    JOIN orders USING (order_id)
+    SET line_items.quantity = 0,
+        orders.status = 'Совсем отменён'
+    WHERE orders.status = 'Отменён';
+
+SELECT * FROM orders;
+
+SELECT * FROM line_items
+    ORDER BY order_id, position;
+
+---
+
+SET sql_safe_updates=1;
+
+---
+
+UPDATE orders SET status = 'Исполнен';
+
+---
+
+SET sql_safe_updates=0;
+
+
+
+
+
+
+
+
+
+
+SELECT
+======
+
+SELECT *
+    FROM line_items
+    WHERE order_id = 1
+    ORDER BY position;
+
+---
+
+INSERT INTO line_items
+    (order_id, position, title, price, quantity)
+    VALUES
+    (1, 1, 'Портвейн', 78.50, 1);
+
+---
+
+SELECT *
+    FROM line_items
+    WHERE order_id = 1
+    ORDER BY position;
+
+---
+
+SELECT *
+    FROM line_items
+    WHERE order_id = 1
+    ORDER BY position
+    LIMIT 1;
+
+---
+
+SELECT *
+    FROM line_items
+    WHERE order_id = 1
+    ORDER BY position
+    LIMIT 1, 1;
+
+---
+
+SELECT *
+    FROM line_items
+    WHERE order_id = 1
+    ORDER BY position DESC
+    LIMIT 0, 1;
+
+---
+
+SELECT *
+    FROM line_items
+    WHERE order_id = 1
+    ORDER BY position
+    LIMIT 1 OFFSET 3;
+
+---
+
+SELECT *
+    FROM line_items
+    WHERE order_id = 1
+    ORDER BY position
+    LIMIT 3, 1;
+
+---
+
+SELECT *
+    FROM line_items
+    WHERE order_id = 1
+    ORDER BY position
+    LIMIT 3, 1;
+
+SELECT FOUND_ROWS();
+
+---
+
+SELECT SQL_CALC_FOUND_ROWS *
+    FROM line_items
+    WHERE order_id = 1
+    ORDER BY position
+    LIMIT 3, 1;
+
+SELECT FOUND_ROWS();
+
+---
+
+SELECT *
+    FROM line_items
+    WHERE order_id = 1
+    ORDER BY position
+    LIMIT 3, 1;
+
+SELECT COUNT(*)
+    FROM line_items
+    WHERE order_id = 1;
+
+---
+
+SELECT *
+    FROM customers c
+    JOIN orders o;
+
+SELECT *
+    FROM customers c1
+    JOIN customers c2;
+
+SELECT *
+    FROM customers c
+    JOIN orders o
+    ON c.customer_id = c.customer_id;
+
+---
+
+SELECT *
+    FROM customers c
+    JOIN orders o
+    ON c.customer_id = o.customer_id;
+
+---
+
+SELECT *
+    FROM customers c
+    JOIN orders o USING (customer_id);
+
+---
+
+SELECT *
+    FROM customers c
+    NATURAL JOIN orders o;
+
+---
+
+SELECT *
+    FROM customers c
+    LEFT JOIN orders o USING (customer_id);
+
+---
+
+SELECT *
+    FROM customers c
+    LEFT JOIN orders o USING (customer_id)
+    WHERE order_id = NULL;
+
+---
+
+SELECT *
+    FROM customers
+    WHERE city != 'Лондон';
+
+SELECT 'Москва' = 'Лондон';
+
+SELECT 'Лондон' = 'Лондон';
+
+SELECT NULL = 'Лондон';
+
+---
+
+SELECT *
+    FROM customers c
+    LEFT JOIN orders o USING (customer_id)
+    WHERE order_id = NULL;
+
+---
+
+SELECT *
+    FROM customers c
+    LEFT JOIN orders o USING (customer_id)
+    WHERE order_id IS NULL;
+
+---
+
+SELECT
+    DISTINCT title
+    FROM line_items;
+
+---
+
+SELECT
+    SQL_BIG_RESULT
+    DISTINCT title
+    FROM line_items;
+
+---
+
+CREATE INDEX idx_title ON line_items (title);
+
+SELECT
+    DISTINCT title
+    FROM line_items;
+
+---
+
+DROP INDEX idx_title ON line_items;
+
+CREATE INDEX idx_title ON line_items (title DESC);
+
+SELECT
+    DISTINCT title
+    FROM line_items;
+
+DROP INDEX idx_title ON line_items;
+
+---
+
+SELECT
+    DISTINCT title
+    FROM line_items
+    ORDER BY title;
