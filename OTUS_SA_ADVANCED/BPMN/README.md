@@ -1,8 +1,8 @@
-﻿***BPMN бизнес-процесса оформление заказа**
+﻿**BPMN бизнес-процесса оформление заказа**
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/Робот%20и%20точка%20оформление%20заказа.png)
 
-***BPMN бизнес-процесса регистрация клиента**
+**BPMN бизнес-процесса регистрация клиента**
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/Робот%20и%20точка%20регистрация%20клиента.png)
 
