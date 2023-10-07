@@ -1,7 +1,6 @@
 ﻿**Схема БД интернет магазина:**
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/1.%20Проектирование%20БД%20/схема_бд.png)
-
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/PostgreSQL/1.%20Проектирование%20БД%20/схема_бд.png)
 **Описание сущностей, атрибутов и бизнес-задач:**
 
 | №                    | 1                                                                      |
