@@ -1,6 +1,6 @@
 ﻿**Use Case диаграмма** 
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/6.%20Use%20case/usecase_crm_drawio.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Use%20case/заказ.png)
 
 **Название** : Оформить возврат
 
