@@ -3,4 +3,4 @@
 3. авторизоваться по адрессу http://localhost
 4. остановить контейнер можно командой docker-compose down
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/3.%20контейнер%20%20PostgreSQL/Screenshot%20.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/PostgreSQL/3.%20контейнер%20%20PostgreSQL/Screenshot%20.png)
