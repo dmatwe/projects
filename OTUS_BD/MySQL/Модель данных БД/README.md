@@ -1,3 +1,5 @@
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/MySQL/Модель%20данных%20БД/mysql.png)
+
 ```python
 import pandas as pd
 import mysql.connector
