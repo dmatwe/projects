@@ -1,5 +1,7 @@
 **Курсы повышения квалификации**
 
+ - [Системный аналитик. Advanced
+   (OTUS)](https://github.com/dmatwe/projects/tree/main/OTUS_SA_ADVANCED)
  - [Системный аналитик. Basic
    (OTUS)](https://github.com/dmatwe/projects/tree/main/OTUS_SA_BASIC)
  - [Базы данных
