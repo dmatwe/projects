@@ -7,7 +7,7 @@
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/UML/uml_s.png)
 
-
+```json
 @startuml
 !theme plain
 scale 1000 width
@@ -80,3 +80,4 @@ state База_данных {
 }
 Хранение_записи_в_бд --> [*]
 @enduml
+```
