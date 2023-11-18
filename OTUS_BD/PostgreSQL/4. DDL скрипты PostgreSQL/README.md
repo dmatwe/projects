@@ -1,6 +1,6 @@
-﻿[Схема данных проекта](https://github.com/dmatwe/projects/tree/main/OTUS_BD/1.%20Проектирование%20БД%20)
+﻿[Схема данных проекта](https://github.com/dmatwe/projects/blob/main/OTUS_BD/PostgreSQL/1.%20Проектирование%20БД%20/схема_бд.png)
 
-[DDL Скрипт](https://github.com/dmatwe/projects/blob/main/OTUS_BD/4.%20DDL%20скрипты%20PostgreSQL/ddl.sql)
+[DDL Скрипт](https://github.com/dmatwe/projects/blob/main/OTUS_BD/PostgreSQL/4.%20DDL%20скрипты%20PostgreSQL/ddl.sql)
 
 **Просмотр всех баз данных кластера:**
 
