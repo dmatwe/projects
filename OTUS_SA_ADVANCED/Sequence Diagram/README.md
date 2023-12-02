@@ -1,6 +1,6 @@
 **Диаграмма последовательности**
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/10.%20API/api.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Sequence%20Diagram/sq.png)
 
 
 ```json
