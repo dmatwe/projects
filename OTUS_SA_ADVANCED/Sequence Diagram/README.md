@@ -1,13 +1,6 @@
-**Диаграмма последовательности**
-
-![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Sequence%20Diagram/sq.png)
-
-
-```json
 actor "Сотрудник производства" as A
 box Упраление роботами #LightGreen   
 participant  "Интерфейс управления роботами" as B 
-boundary "API Сервис" as C
 participant  "Система управления роботами" as D
 end box 
 hide footbox
@@ -32,8 +25,8 @@ A <-- B:  Уведомление об успехе
 B--
 
 
-A -> B++:  Приготовить 100 бургеров
-loop Max = 100 
+A -> B++:  Приготовить N бургеров
+loop Max = N 
 B -> D++:  POST-запрос на приготовление бургера
 return Ответ 200: ОК
 end
@@ -104,4 +97,3 @@ B <-- D:  Ответ 200: ОК
 B++
 A <-- B:  Уведомление об успехе
 end
-```
