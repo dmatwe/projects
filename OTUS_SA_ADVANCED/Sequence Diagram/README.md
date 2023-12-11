@@ -1,3 +1,9 @@
+**Диаграмма последовательности**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Sequence%20Diagram/sq.png)
+
+
+```json
 actor "Сотрудник производства" as A
 box Упраление роботами #LightGreen   
 participant  "Интерфейс управления роботами" as B 
@@ -97,3 +103,4 @@ B <-- D:  Ответ 200: ОК
 B++
 A <-- B:  Уведомление об успехе
 end
+```
