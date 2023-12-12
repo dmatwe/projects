@@ -1,4 +1,6 @@
- - [Проектирование ресурсной модели Open API](https://app.swaggerhub.com/apis/DenisMatveev/order/1.0.0-oas3)
+ **Проектирование ресурсной модели Open API**
+ 
+ - [Спецификация](https://app.swaggerhub.com/apis/DenisMatveev/order/1.0.0-oas3)
 
 ```json
 ---
