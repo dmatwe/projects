@@ -1,0 +1,151 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Orders
+  description: API для заказа блюд через приложение
+  
+paths:
+    /order:
+      get:
+        summary: Метод получения заказов
+        description: Метод предназначен для получения списка всех заказов, сохраненных в БД.
+        operationId: getOrders
+        tags:
+          - Order
+        responses:
+          '200':
+            description: Список заказов
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/Order"
+                    
+    /orders/checkout:
+      post:
+        summary: Создать заказ
+        description: Метод создания заказа
+        operationId: CreatOrder
+        tags:
+          - Order
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/CheckoutRequest'
+        responses:
+          '200':
+            description: Заказ успешно оформлен
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/Order"
+          '400':
+            description: Неверный запрос, например, неполные или некорректные данные
+            
+    /order/{order_id}:
+      get:
+        summary: Метод получения инфо по заказу
+        description: Метод предназначен для получения инфо по конкретному заказу
+        operationId: getOrderId
+        tags:
+        - Order
+        parameters:
+        - name: order_id
+          in: path
+          required: true
+          description: Идентификатор заказа
+          example: 42abcd2b-8b9c-4af9-88f7-0bc180cf74b4
+          schema:
+            type: string
+            format: uuid
+        responses:
+          '200':
+            description: Заказ
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Order"
+      put:
+        summary: Метод обновления заказа
+        description: Метод предназначен для обновления в БД данных по существующему заказу.
+        operationId: updateOrder
+        tags:
+        - Order
+        parameters:
+          - name: order_id
+            in: path
+            required: true
+            description: Идентификатор игрушки
+            example: 42abcd2b-8b9c-4af9-88f7-0bc180cf74b4
+            schema:
+              type: string
+              format: uuid
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+        responses:
+          '200':
+            description: Подтверждение успешного обновления
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Order"
+          '400':
+            description: Некорректные входные данные. Возвращает список атрибутов с ошибками
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: string
+                
+                    
+components:
+    schemas:
+      Order:
+        type: object
+        required:
+          - order_id
+          - status
+        properties:
+          order_id:
+            type: string
+            format: uuid
+            example: 42abcd2b-8b9c-4af9-88f7-0bc180cf74b4
+          status:
+            description: Статус заказа
+            type: string
+            enum:
+              - Created
+              - Paid
+              - Cancel
+            example: Paid
+          created_at:
+            description: Дата и время заказа
+            type: string
+            example: 2022-07-01T15:00:00+01
+            
+      CheckoutRequest:
+        type: object
+        properties:
+          address:
+            type: string
+            description: Адрес доставки
+          paymentMethod:
+            type: string
+            description: Способ оплаты
+            enum:
+              - card
+              - ewallet
+              - sbp
+              - tpay
+              - spay
+              - cash
