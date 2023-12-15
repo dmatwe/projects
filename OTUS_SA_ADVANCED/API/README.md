@@ -207,7 +207,7 @@ paths:
         "500":
           description: Внутренняя ошибка сервера
   /cart/items/{itemId}:
-    put:
+    patch:
       tags:
       - Работа с заказом и корзиной
       summary: Редактирование блюда в корзине
