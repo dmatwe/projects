@@ -22,6 +22,12 @@ conn = psycopg2.connect(host="45.134.254.239", port="25432", database="demo",
 cur = conn.cursor()
 ```
 
+
+```python
+cur.close()
+conn.close()
+```
+
 ### количество рейсов в разрезе модели самолета;
 
 
@@ -121,7 +127,7 @@ plt.show()
 
 
     
-![png](output_7_0.png)
+![png](output_8_0.png)
     
 
 
@@ -211,7 +217,7 @@ plt.show()
 
 
     
-![png](output_10_0.png)
+![png](output_11_0.png)
     
 
 
@@ -321,27 +327,20 @@ plt.show()
 
 
     
-![png](output_13_0.png)
+![png](output_14_0.png)
     
 
 
-### среднюю загруженность самолётов по типам воздушных судов  с накоплением
+### средняя загруженность самолётов по типам воздушных судов  с накоплением
 
 
 ```python
 cur.execute('''
+
 select 
 aircraft_code,
-ticket_count,
-sum(ticket_count) over (partition by aircraft_code order by scheduled_departure) as ticket_count_sum,
-round(avg(ticket_count) over (partition by aircraft_code)) as avg,
-scheduled_departure::date
-from
-(
-select 
-aircraft_code,
-sum(ticket_count) as ticket_count,
-date_trunc('day', scheduled_departure) as scheduled_departure
+coalesce(round(avg(sum(ticket_count)) over (partition by aircraft_code order by date_trunc('day', scheduled_departure)::date )), 0) as avg_ticket_count_sum,
+date_trunc('day', scheduled_departure)::date as scheduled_departure
 from flights l
 left join 
 (select 
@@ -350,13 +349,13 @@ count(*) as ticket_count
 from ticket_flights l
 group by flight_id) as r
 using(flight_id)
-group by date_trunc('day', scheduled_departure), aircraft_code
+group by date_trunc('day', scheduled_departure)::date, aircraft_code
 order by aircraft_code, scheduled_departure
-) as a
+
             ''')
 
 results = cur.fetchall()
-df =pd.DataFrame(results, columns=['aircraft_code', 'ticket_count', 'ticket_count_sum', 'avg', 'scheduled_departure'])
+df =pd.DataFrame(results, columns=['aircraft_code', 'avg_ticket_count_sum', 'scheduled_departure'])
 df.head()
 ```
 
@@ -382,9 +381,7 @@ df.head()
     <tr style="text-align: right;">
       <th></th>
       <th>aircraft_code</th>
-      <th>ticket_count</th>
-      <th>ticket_count_sum</th>
-      <th>avg</th>
+      <th>avg_ticket_count_sum</th>
       <th>scheduled_departure</th>
     </tr>
   </thead>
@@ -392,41 +389,31 @@ df.head()
     <tr>
       <th>0</th>
       <td>319</td>
-      <td>None</td>
-      <td>None</td>
-      <td>996</td>
+      <td>0</td>
       <td>2017-05-16</td>
     </tr>
     <tr>
       <th>1</th>
       <td>319</td>
       <td>389</td>
-      <td>389</td>
-      <td>996</td>
       <td>2017-05-17</td>
     </tr>
     <tr>
       <th>2</th>
       <td>319</td>
-      <td>535</td>
-      <td>924</td>
-      <td>996</td>
+      <td>462</td>
       <td>2017-05-18</td>
     </tr>
     <tr>
       <th>3</th>
       <td>319</td>
-      <td>480</td>
-      <td>1404</td>
-      <td>996</td>
+      <td>468</td>
       <td>2017-05-19</td>
     </tr>
     <tr>
       <th>4</th>
       <td>319</td>
-      <td>614</td>
-      <td>2018</td>
-      <td>996</td>
+      <td>505</td>
       <td>2017-05-20</td>
     </tr>
   </tbody>
@@ -435,12 +422,10 @@ df.head()
 
 
 
-#### Накопительно
-
 
 ```python
 plt.figure(figsize=(10, 6))
-sns.lineplot(x='scheduled_departure', y='ticket_count_sum', hue='aircraft_code', 
+sns.lineplot(x='scheduled_departure', y='avg_ticket_count_sum', hue='aircraft_code', 
              data=df)
 plt.xticks(rotation=45)
 plt.show()
@@ -449,99 +434,6 @@ plt.show()
 
     
 ![png](output_17_0.png)
-    
-
-
-#### Средняя загруженность
-
-
-```python
-df[['aircraft_code', 'avg']].drop_duplicates()
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>aircraft_code</th>
-      <th>avg</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>319</td>
-      <td>996</td>
-    </tr>
-    <tr>
-      <th>122</th>
-      <td>321</td>
-      <td>1951</td>
-    </tr>
-    <tr>
-      <th>243</th>
-      <td>733</td>
-      <td>1602</td>
-    </tr>
-    <tr>
-      <th>364</th>
-      <td>763</td>
-      <td>2326</td>
-    </tr>
-    <tr>
-      <th>485</th>
-      <td>773</td>
-      <td>2716</td>
-    </tr>
-    <tr>
-      <th>606</th>
-      <td>CN1</td>
-      <td>274</td>
-    </tr>
-    <tr>
-      <th>727</th>
-      <td>CR2</td>
-      <td>2829</td>
-    </tr>
-    <tr>
-      <th>848</th>
-      <td>SU9</td>
-      <td>6756</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-```python
-plt.figure(figsize=(10, 6))
-sns.barplot(data=df[['aircraft_code', 'avg']].drop_duplicates(), x="aircraft_code", y="avg")
-plt.xticks(rotation=45)
-plt.show()
-```
-
-
-    
-![png](output_20_0.png)
     
 
 
@@ -645,6 +537,6 @@ plt.show()
 
 
     
-![png](output_23_0.png)
+![png](output_20_0.png)
     
 
