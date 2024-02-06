@@ -1,6 +1,6 @@
 ﻿**Модель базы данных** 
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/User%20Story/Карта%20пользовательских%20историй%20.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/БД%20нагрузка/robot.png)
 
 | Сущность         | clients                          |
 | ---------------- | -------------------------------- |
