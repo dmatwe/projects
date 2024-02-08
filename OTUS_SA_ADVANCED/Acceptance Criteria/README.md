@@ -1,4 +1,6 @@
-﻿ - [Miro (полная версия)](https://miro.com/welcomeonboard/TW0xZXBtOEEwaVpBNWJIcnZEcW1qYkJuNWN1RFJwcG0xd2FzZzVBa2VDTDU3bmhNdzRRN2FnZDRiU2FvTkRLSnwzNDU4NzY0NTIzNjk5NzU4NDczfDI=?share_link_id=699446562339)
+﻿ ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Acceptance%20Criteria/US.png)
+ 
+ - [Miro (полная версия)](https://miro.com/welcomeonboard/TW0xZXBtOEEwaVpBNWJIcnZEcW1qYkJuNWN1RFJwcG0xd2FzZzVBa2VDTDU3bmhNdzRRN2FnZDRiU2FvTkRLSnwzNDU4NzY0NTIzNjk5NzU4NDczfDI=?share_link_id=699446562339)
 
 **Декомпозиция US** 
 
