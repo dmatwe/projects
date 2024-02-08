@@ -162,3 +162,13 @@
 - Регрессионные тесты проходят
 - Выполнены нефункциональные требования
 - Обновлена пользовательская документация
+
+
+**Модель предметной области**
+**диаграмме-классов**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/UML/uml_er.png)
+
+**Диаграмма состояний**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/UML/uml_s.png)
