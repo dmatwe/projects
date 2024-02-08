@@ -138,7 +138,7 @@
 
 **US клиент** 
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/User%20Story/US%20клиент.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Acceptance%20Criteria/US.png)
 
 **US Сотрудник производства** 
 
