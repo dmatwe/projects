@@ -24,7 +24,7 @@
 
 **Karpov Courses Аналитик данных** 
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/Karpov_DA.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/karpov_DA.png)
 
 **SOLO LEARN Python** 
 
