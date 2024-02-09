@@ -16,4 +16,4 @@
 
 **Use Case диаграмма** 
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/ОТУС_СА_Б.pngs)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/ОТУС_СА_Б.png)
