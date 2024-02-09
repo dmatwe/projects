@@ -17,3 +17,19 @@
 **УПК ОТУС Cистемный аналитик BASIC** 
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/ОТУС_СА_Б.png)
+
+**Karpov Courses Инженер данных** 
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/Karpov_DE.png)
+
+**Karpov Courses Аналитик данных** 
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/Karpov_DA.png)
+
+**SOLO LEARN Python** 
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/SL_python.jpg)
+
+**SOLO LEARN SQL** 
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/SL_sql.jpg)
