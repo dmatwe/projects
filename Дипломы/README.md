@@ -1,19 +1,19 @@
-﻿**РАНХИГС_БИ_МАГ** 
+﻿**Ранхигс красный диплом магистратура** 
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/РАНХИГС_БИ_МАГ.png)
 
-**Use Case диаграмма** 
+**Ранхигс диплом бакалавриат** 
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/РАНХИГС_БИ_БАК.png)
 
-**Use Case диаграмма** 
+**УПК Университет Иннополис** 
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/ИННОПОЛИС_ДАТА.png)
 
-**Use Case диаграмма** 
+**УПК ОТУС Базы данных** 
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/ОТУС_БД.png)
 
-**Use Case диаграмма** 
+**УПК ОТУС Cистемный аналитик BASIC** 
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/ОТУС_СА_Б.png)
