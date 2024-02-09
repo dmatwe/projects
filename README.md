@@ -1,4 +1,7 @@
-**Курсы повышения квалификации**
+**Дипломы, УПК, Сертификаты**
+ - [Документы](https://github.com/dmatwe/projects/tree/main/Дипломы)
+
+**Материал курсов повышения квалификации**
 
  - [Системный аналитик. Advanced
    (OTUS)](https://github.com/dmatwe/projects/tree/main/OTUS_SA_ADVANCED)
