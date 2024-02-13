@@ -32,6 +32,19 @@ spark = _spark_session()
 
 ## spark датафреймы из parquet файлов
 
+![Image alt](https://github.com/dmatwe/projects/blob/main/KARPOV_DE/spark/image.jpg)
+
+
+| Таблица  | Описание                                 |
+| -------- | ---------------------------------------- |
+| customer | информация о заказчиках                  |
+| lineitem | информация о позициях в заказах          |
+| nation   |  информация о нациях/странах             |
+| orders   | информация о заказах                     |
+| parts    | информация о деталях/запчастях           |
+| partsupp | информация о поставках деталей/запчастей |
+| region   | информация о регионах                    |
+| supplier | информация о поставщиках                 |
 
 ```python
 lineitem_df = spark.read.parquet('/Users/denis/Desktop/de/lineitem')
