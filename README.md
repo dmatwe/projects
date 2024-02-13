@@ -3,6 +3,8 @@
 
 **Материал курсов повышения квалификации**
 
+-  [Инженер данных
+   (karpov.courses)](https://github.com/dmatwe/projects/tree/main/KARPOV_DE)
  - [Системный аналитик. Advanced
    (OTUS)](https://github.com/dmatwe/projects/tree/main/OTUS_SA_ADVANCED)
  - [Системный аналитик. Basic
