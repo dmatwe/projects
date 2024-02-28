@@ -26,6 +26,11 @@
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/karpov_DA.png)
 
+**Karpov Courses SQL симулятор** 
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/Karpov_SQL1.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/Karpov_SQL2.png)
+
 **SOLO LEARN Python** 
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/SL_python.jpg)
