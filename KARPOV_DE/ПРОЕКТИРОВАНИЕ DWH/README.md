@@ -33,7 +33,7 @@ DWH – это корпоративное централизованное хр�
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/KARPOV_DE/ПРОЕКТИРОВАНИЕ%20DWH/Инмон_пример.png)
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/KARPOV_DE/ПРОЕКТИРОВАНИЕ%20DWH/karpov-по Инмону.drawio.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/KARPOV_DE/ПРОЕКТИРОВАНИЕ%20DWH/karpov-по%20Инмону.drawio.png)
 
 
 
@@ -70,5 +70,8 @@ DWH по Кимбаллу - копия транзакционных данных
 Отсутствие стандартизации показателей (в каждой витрине может быть свой алгоритм)
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/KARPOV_DE/ПРОЕКТИРОВАНИЕ%20DWH/Кимбалл_пример.png)
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/KARPOV_DE/ПРОЕКТИРОВАНИЕ%20DWH/karpov-по%20Кимбаллу.drawio.png)
+
 
 
