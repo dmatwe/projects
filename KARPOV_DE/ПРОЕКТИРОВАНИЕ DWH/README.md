@@ -92,3 +92,5 @@ PIT (point in time) – упрощает получение информации
 частотой обновления.
 
 Predefined Derivations представляет собой предрассчитанные значения.
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/KARPOV_DE/ПРОЕКТИРОВАНИЕ%20DWH/karpov-DATA%20VAULT.drawio.png)
