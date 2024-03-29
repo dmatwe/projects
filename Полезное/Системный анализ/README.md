@@ -282,3 +282,7 @@ GUI (graphical user interface) системы должен разрабатыв�
 <br/>
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/layer.png)
 
+
+***Дополнительные слои***
+<br/>
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/dop_layer.png)
