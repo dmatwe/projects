@@ -341,3 +341,7 @@ GUI (graphical user interface) системы должен разрабатыв�
 вынесены в отдельный компонент
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/comp3.png)
+
+**Монолит**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/monolit.png)
