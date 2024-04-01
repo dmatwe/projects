@@ -86,7 +86,7 @@
 
 «Требование – это удобное представление потребности. Требования направлены на понимание того, какую ценность можно получить, если требование будет выполнено.» BABOK (2015)
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/req.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/req.png)
 
 <a name="т1"></a>
 ***1. Бизнес-требования*** (BRQ- business requirements questionnaire) –   информация, в совокупности
@@ -316,16 +316,16 @@ GUI (graphical user interface) системы должен разрабатыв�
 ***Концепция слоёв*** – подход, используемый при проектировании сложных
 систем, предполагающий разделение системы на более простые части
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/client_server.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/client_server.png)
 
 ***Расслоение системы***
 <br/>
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/layer.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/layer.png)
 
 
 ***Дополнительные слои***
 <br/>
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/dop_layer.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/dop_layer.png)
 
 <a name="а2"></a>
 
@@ -344,7 +344,7 @@ GUI (graphical user interface) системы должен разрабатыв�
 <br/>
 В компоненте реализуется логика, описанных в интерфейсе операций.
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/intface.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/intface.png)
 
 <a name="а4"></a>
 
@@ -359,7 +359,7 @@ GUI (graphical user interface) системы должен разрабатыв�
 <br/>
 Иметь возможность тестировать отдельные части системы без привлечения других частей
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/comp.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/comp.png)
 
 ***Принципы разделения компонентов*** 
 
@@ -371,7 +371,7 @@ GUI (graphical user interface) системы должен разрабатыв�
 
 <a name="а5"></a>
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/comp1.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/comp1.png)
 
 ***Разделение по субдоменам (bounded contexts)***
  – внутри
@@ -380,7 +380,7 @@ GUI (graphical user interface) системы должен разрабатыв�
 
 <a name="а6"></a>
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/comp2.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/comp2.png)
 
 
 ***Разделение по принципу единой функциональности*** и
@@ -390,17 +390,17 @@ GUI (graphical user interface) системы должен разрабатыв�
 
 <a name="а7"></a>
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/comp3.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/comp3.png)
 
 **Монолит**
 
 <a name="а8"></a>
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/monolit.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/monolit.png)
 
 ***Преимущества и недостатки монолита***
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/monolit1.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/monolit1.png)
 
 ***Применение***
 
@@ -416,7 +416,7 @@ GUI (graphical user interface) системы должен разрабатыв�
 
 <a name="а9"></a>
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/soa.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/soa.png)
 
 Взаимодействие между сервисами
 осуществляется через ***корпоративную шину данных (ESB)*** по унифицированному
@@ -437,7 +437,7 @@ GUI (graphical user interface) системы должен разрабатыв�
 
 ***Преимущества и недостатки SOA***
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/soa1.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/soa1.png)
 
 ***Применение***
 
@@ -460,14 +460,14 @@ GUI (graphical user interface) системы должен разрабатыв�
 сведено к минимуму***. Иначе микросервисная архитектура
 превратится в модульный монолит
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/mcsrvc.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/mcsrvc.png)
 
 
 ***Преимущества и недостатки Микросервисов***
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/mcsrvc1.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/mcsrvc1.png)
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/mcsrvc2.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/mcsrvc2.png)
 
 
 ***Применение***
@@ -484,13 +484,13 @@ GUI (graphical user interface) системы должен разрабатыв�
 
 <a name="а11"></a>
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/arch1.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/arch1.png)
 
 **Плохая архитектура**
 
 <a name="а12"></a>
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/arch2.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/arch2.png)
 
 **Интеграции**
 
@@ -498,12 +498,12 @@ GUI (graphical user interface) системы должен разрабатыв�
 
 ***Интеграция*** – передача данных от одной системы в другую
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/int.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/int.png)
 
 ***File transfer***
 <a name="и2"></a>
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/int1.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/int1.png)
 
 ***Применение:***
 <br/>
@@ -513,7 +513,7 @@ GUI (graphical user interface) системы должен разрабатыв�
 ***Shared Database***
 <a name="и3"></a>
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/int2.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/int2.png)
 
 ***Применение:***
 <br/>
@@ -525,7 +525,7 @@ GUI (graphical user interface) системы должен разрабатыв�
 ***Remote Procedure Call (RPC)***
 <a name="и4"></a>
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/int3.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/int3.png)
 
 ***Применение:***
 <br/>
@@ -536,10 +536,10 @@ GUI (graphical user interface) системы должен разрабатыв�
 ***Message***
 <a name="и5"></a>
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/int4.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/int4.png)
 
 ***Применение:***
 <br/>
 Транспорт данных быстрее чем у БД, данные временно хранятся в брокере, есть оповещение действий (Kafka/Rabbit MQ)
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/int5.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/int5.png)
