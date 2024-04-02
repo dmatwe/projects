@@ -901,7 +901,7 @@ Publisher -> exchange
 
 ***Методы***
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/rest6.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/rest6.jpg)
 
 
 ***Идемпотентность*** - свойство метода, которое говорит о том, что многократный вызов метода приводит к одинаковому результату.
