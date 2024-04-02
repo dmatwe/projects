@@ -783,9 +783,17 @@ Publisher -> exchange
 <br/>
 (от англ. eXtensible Markup Language) — расширяемый язык разметки. Спецификация XML описывает XML-документы и частично описывает поведение XML-процессоров (программ, читающих XML-документы и обеспечивающих доступ к их содержимому).
 
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/xml.png)
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/xml1.png)
+
 ***XSD (от англ. XML Schema Definition)*** — язык описания структуры XML-документа. Позволяет валидировать входящие данные.
 
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/xsd.png)
+
 ***WSDL (от англ. Web Services Description Language)*** — язык описания веб-сервисов и доступа к ним, основанный на языке XML.
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/wsdl.png)
 
 ***Отличия SOAP от REST***
 
