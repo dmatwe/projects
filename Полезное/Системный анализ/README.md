@@ -1013,10 +1013,12 @@ Publisher -> exchange
 
 
 **Транзакция**
+<a name="bd1"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/tran.png)
 
 **ACID**
+<a name="bd2"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/acid1.png)
 
@@ -1024,6 +1026,7 @@ Publisher -> exchange
 
 
 **Реляционная база данных**
+<a name="bd3"></a>
 
 ***В реляционной модели***, как объекты, так и их отношения представлены только таблицами. Основана на реляционной алгебре и включает в себя:
 
@@ -1061,6 +1064,7 @@ ACID
 
 
 **NoSQL**
+<a name="bd4"></a>
 
 Графовые - вершины, ребра и их свойства.
 
@@ -1074,6 +1078,7 @@ ACID
 
 
 **МРР СУБД**
+<a name="bd5"></a>
 
 MPP ( Massive Parallel Processing) или Массово-параллельная архитектура - это параллельные вычисления на нескольких серверах объединенных в один кластер.
 
@@ -1124,12 +1129,14 @@ Cloud Compatibility. Совместимость с облачными решен
 
 
 ***CAP***
+<a name="bd6"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/cap.png)
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/cap1.png)
 
 **Глоссарий**
+<a name="bd7"></a>
 
 ***Шардинг*** — метод разделения и хранения единого логического набора данных в виде множества баз данных. Другое определение шардинга — горизонтальное разделение данных.
 
@@ -1150,9 +1157,11 @@ Cloud Compatibility. Совместимость с облачными решен
 
 
 **OLAP**
+<a name="bd8"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/olap.png)
 
 **OLTP**
+<a name="bd9"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/oltp.png)
