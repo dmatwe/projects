@@ -174,7 +174,10 @@
 [9. OLTP](#bd9)
 <br/>
 
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/map1.png)
+
 «Требование – это удобное представление потребности. Требования направлены на понимание того, какую ценность можно получить, если требование будет выполнено.» BABOK (2015)
+
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/req.png)
 
