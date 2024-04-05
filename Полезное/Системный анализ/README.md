@@ -517,7 +517,7 @@ GUI (graphical user interface) системы должен разрабатыв�
 
 **9. SOA**
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/soamap.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/soamap.jpg)
 
 <a name="а9"></a>
 
