@@ -497,6 +497,8 @@ GUI (graphical user interface) системы должен разрабатыв�
 
 <a name="а8"></a>
 
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/monmap.png)
+
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/monolit.png)
 
 ***Преимущества и недостатки монолита***
