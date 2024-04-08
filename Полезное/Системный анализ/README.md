@@ -671,12 +671,14 @@ GUI (graphical user interface) системы должен разрабатыв�
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/asinc.png)
 
 ***Принцип работы очередей сообщений***
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/mapbrok.jpg)
+
 <a name="б1"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/broker.png)
 
 ***Применение брокеров***
-<a name="б2"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/broker2.png)
 
