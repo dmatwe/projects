@@ -738,6 +738,9 @@ GUI (graphical user interface) системы должен разрабатыв�
 2 очереди для запроса и ответа (RabbitMq)
 
 ***Сравнение брокеров***
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/krk.jpg)
+
 <a name="б11"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/broker4.png)
