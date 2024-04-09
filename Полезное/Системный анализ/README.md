@@ -875,7 +875,7 @@ Publisher -> exchange
 
 **REST API**
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/restpmap.jpg)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/restmap.jpg)
 
 <a name="rest1"></a>
 
