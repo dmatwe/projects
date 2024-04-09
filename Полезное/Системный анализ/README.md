@@ -1044,6 +1044,9 @@ Publisher -> exchange
 
 
 **Транзакция**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/tran.jpg)
+
 <a name="bd1"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/tran.png)
