@@ -820,7 +820,10 @@ Publisher -> exchange
 
 
 **SOAP**
+
 <a name="SOAP1"></a>
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/soapmap.jpg)
 
 ***SOAP*** — протокол доступа к объектам — протокол (HTTP) обмена структурированными сообщениями в распределённой вычислительной среде (удаленный вызов). 
 
