@@ -874,6 +874,9 @@ Publisher -> exchange
 
 
 **REST API**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/restpmap.jpg)
+
 <a name="rest1"></a>
 
 ***REST*** — архитектурный стиль взаимодействия компонентов распределённого приложения в сети.
