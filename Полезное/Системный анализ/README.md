@@ -1172,7 +1172,11 @@ Cloud Compatibility. Совместимость с облачными решен
 
 
 ***CAP***
+
+
 <a name="bd6"></a>
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/capmap.jpg)
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/cap.png)
 
