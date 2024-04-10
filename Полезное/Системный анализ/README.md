@@ -1118,6 +1118,9 @@ ACID
 
 
 **МРР СУБД**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/mppmap.png)
+
 <a name="bd5"></a>
 
 MPP ( Massive Parallel Processing) или Массово-параллельная архитектура - это параллельные вычисления на нескольких серверах объединенных в один кластер.
