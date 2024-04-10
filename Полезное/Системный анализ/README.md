@@ -1101,6 +1101,9 @@ ACID
 
 
 **NoSQL**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/nosqlmap.jpg)
+
 <a name="bd4"></a>
 
 Графовые - вершины, ребра и их свойства.
