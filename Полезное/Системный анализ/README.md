@@ -1119,7 +1119,7 @@ ACID
 
 **МРР СУБД**
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/mppmap.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/mppmap.jpg)
 
 <a name="bd5"></a>
 
