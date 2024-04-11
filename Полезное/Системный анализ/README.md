@@ -177,6 +177,10 @@
 
 
 **[Стратегии хранения данных](https://github.com/dmatwe/projects/tree/main/OTUS_BD/MySQL/Модель%20хранения)**
+<br/>
+**[Проектирование DWH](https://github.com/dmatwe/projects/tree/main/KARPOV_DE/ПРОЕКТИРОВАНИЕ%20DWH)**
+
+
 
 **Mind map требований**
 
