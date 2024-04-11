@@ -174,6 +174,10 @@
 [9. OLTP](#bd9)
 <br/>
 
+
+
+**[Стратегии хранения данных](https://github.com/dmatwe/projects/tree/main/OTUS_BD/MySQL/Модель%20хранения)**
+
 **Mind map требований**
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/map1.png)
