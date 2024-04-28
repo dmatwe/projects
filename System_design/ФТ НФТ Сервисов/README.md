@@ -118,6 +118,7 @@ Cостоит из удерживаемых соединений в единиц
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/design.png)
 
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/design2.png)
 
 
 ***Общий дизайн***
