@@ -684,7 +684,7 @@ Gbps (Read) = 1 000 000 (RPS read) * 1 Kb = 8  Gbps
 2. Пользователи могут смотреть фильмы с разных устройств, поэтому нужно подготовить версии фильмов разного размера;
 3. Можно отметить использование нескольких типов хранилищ и необходимость подготовки фильмов под разные форматы.
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/twit.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/net.png)
 
 **Поиск ресторанов**
 
