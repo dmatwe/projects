@@ -543,8 +543,45 @@ Key-value БД - для хранения статусов пользовател
 
 Информация обо всех рассылках должна сохраняться на будущее на всякий случай;
 
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/not2.png)
 
 
+Добавим очередь сообщений: разъединяем зависимые сервисы, выделяем естественные фоновые процессы.
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/not3.png)
+
+
+**Сервис бронирования**
+
+***Зачем нужен такой сервис?***
+
+Чтобы было где пережидать периоды структурных трансформаций и поисков новых моделей бизнеса.
+
+***Какие сценарии отобразим?***
+
+Владельцы отелей регистрируются и пополняют жилой фонд;
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/hotel.png)
+
+Пользователи регистрируются, могут искать и бронировать жильё;
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/hotel2.png)
+
+И владельцы, и пользователи могут редактировать бронь.
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/hotel3.png)
+
+После завершения брони её можно положить в архив;
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/hotel4.png)
+
+При изменениях в брони уведомляем пользователя;
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/hotel5.png)
+
+Добавляем очередь сообщений: отсоединяем добавленные в качестве приправы сервисы и общаемся с ними через очередь.
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/hotel6.png)
 
 
 **Сокращатель ссылок**
