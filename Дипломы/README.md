@@ -6,6 +6,11 @@
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/РАНХИГС_БИ_БАК.png)
 
+
+**Диплом ПП ОТУС Cистемный аналитик** 
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/otus_sa_d.png)
+
 **УПК Университет Иннополис** 
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Дипломы/ИННОПОЛИС_ДАТА.png)
