@@ -45,5 +45,5 @@
 5. Справочная информация и действия проверяющих хранится в БД действий проверяющих 
 
 
-![Image alt](https://github.com/dmatwe/projects/tree/main/System_design/проекты/png)
+![Image alt](https://github.com/dmatwe/projects/tree/main/System_design/проекты/png/karpov-high.png)
 
