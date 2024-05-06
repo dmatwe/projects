@@ -44,6 +44,4 @@
 4. Проверяющие ДЗ занимаются проверкой проектов студентов, которые хранятся в БД файлов ДЗ и начисляют баллы, начисление баллов осуществляется в БД действий 
 5. Справочная информация и действия проверяющих хранится в БД действий проверяющих 
 
-
-![Image alt](https://github.com/dmatwe/projects/tree/main/System_design/проекты/png/karpov-high.png)
-
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/проекты/png/karpov-high.png)
