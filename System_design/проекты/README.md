@@ -46,6 +46,8 @@
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/проекты/png/karpov-high.png)
 
+***МОДУЛЬНЫЙ ПОДХОД К ДИЗАЙНУ***
+
 ***Главная страница курса***
 
 Роли: Модератор, клиент, Маркетолог
@@ -97,6 +99,8 @@ RabbitMQ идеально подходит для веб-сервисов с н
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/проекты/png/market-high.png)
 
+
+***МОДУЛЬНЫЙ ПОДХОД К ДИЗАЙНУ***
 
 ***Маркетплейс***
 Роли: Покупатель,  продавец, модераторы, маркетолог
