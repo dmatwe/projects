@@ -92,6 +92,10 @@ Cостоит из удерживаемых соединений в единиц
 
 Если дисков много, в игру вступает и среднее количество отказов за год (AFR) в размере 1%.
 
+[Калькулятор расчета нагрузки](https://docs.google.com/spreadsheets/d/1gPkj5037qmPXl3bx4agvglszXycnRkQXPuWUZkz2VtI/edit?usp=sharing)
+
+
+
 
 
 
