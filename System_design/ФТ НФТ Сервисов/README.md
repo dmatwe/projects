@@ -12,7 +12,7 @@
 <br/>
 [6. Стоимость](#р6)
 <br/>
-
+[Калькулятор расчета нагрузки](https://docs.google.com/spreadsheets/d/1gPkj5037qmPXl3bx4agvglszXycnRkQXPuWUZkz2VtI/edit?usp=sharing)
 
 **Расчет нагрузки на систему**
 <a name="р1"></a>
