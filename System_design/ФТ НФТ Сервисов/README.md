@@ -1538,19 +1538,19 @@ D размера S x P, где D[m][n] – матч между S[1..m] и P[1..n
 
 Стек заполнен
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/bucket.jpg)
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/bucket.png)
 
 Пользователь сделал запрос и один токен сгорел
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/bucket1.jpg)
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/bucket1.png)
 
 Когда свободные токены закончились, запрос блокируется
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/bucket2.jpg)
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/bucket2.png)
 
 Через установленное время токены начинают восстанавливаться и пользователь сможет отправить запрос
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/bucket3.jpg)
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/bucket3.png)
 
 
 ***Минусы алгоритма*** 
@@ -1564,7 +1564,7 @@ D размера S x P, где D[m][n] – матч между S[1..m] и P[1..n
 1. В приложении также есть стек с токенами;
 2. Дополнительно после стека установлена очередь исполнения. Т.е. запросы, прошедшие через стек, исполняются не сразу, а устанавливаются в общую очередь и исполняются по мере возможности сервиса.
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/bucket4.jpg)
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/bucket4.png)
 
 
 
@@ -1572,11 +1572,11 @@ D размера S x P, где D[m][n] – матч между S[1..m] и P[1..n
 
 Ограничиваем запросы в равные промежутки времени.
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/bucket5.jpg)
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/bucket5.png)
 
 Всё-таки предельная нагрузка может достигаться, если все запросы придут на период между двумя промежутками времени
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/bucket6.jpg)
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/bucket6.png)
 
 
 ***Алгоритм с обновленным логом***
@@ -1585,7 +1585,7 @@ D размера S x P, где D[m][n] – матч между S[1..m] и P[1..n
 2. При поступлении нового запроса чистим старые, если такие есть;
 3. Если в логе нет места для текущего запроса, пропускаем его.
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/bucket7.jpg)
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/bucket7.png)
 
 
 ***Алгоритм со скользящим окном***
@@ -1594,7 +1594,7 @@ D размера S x P, где D[m][n] – матч между S[1..m] и P[1..n
 2. Оценивает количество запросов во временном окне как взвешенную сумму статистик по периодам;
 3. В окне, содержащем 1/3 первой минуты и 2/3 второй, оцениваем запросы как 1/3 * n1 + 2/3 * n2.
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/bucket8.jpg)
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/bucket8.png)
 
 
 ***Модули защиты системы***
@@ -1612,11 +1612,11 @@ D размера S x P, где D[m][n] – матч между S[1..m] и P[1..n
 
 Пользователь не обращается к нашему серверу напрямую 
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/proxy.jpg)
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/proxy.png)
 
 Обратный прокси-сервер используется для сокрытия реальных серверов, отвечающих на запросы пользователя.
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/proxy1.jpg)
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/proxy1.png)
 
 Таким образом, все запросы идут на IP прокси-сервера, при этом адреса настоящих серверов известны только прокси, который переадресует запрос к настоящему серверу, получает ответ и отправляет пользователю
 
@@ -1631,7 +1631,7 @@ D размера S x P, где D[m][n] – матч между S[1..m] и P[1..n
 <br/>
 Если запрос пришел с другого порта или адреса, он не пройдёт к серверу.
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/wall.jpg)
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/wall.png)
 
 
 ***Типы файрволов:***
@@ -1650,9 +1650,9 @@ D размера S x P, где D[m][n] – матч между S[1..m] и P[1..n
 
 Они также позволяют отобразить кешированную версию сайта на случай падения основного приложения.
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/wall1.jpg)
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/wall1.png)
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/wall2.jpg)
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/wall2.png)
 
 
 ***Подсистемы мониторинга***
@@ -1674,7 +1674,7 @@ D размера S x P, где D[m][n] – матч между S[1..m] и P[1..n
 
 Для сбора метрик в большом приложении можно организовать подсистему логирования с каждого из сервисов.
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/graflog.jpg)
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/graflog.png)
 
 
 ***Внешние подсистемы***
@@ -1695,7 +1695,7 @@ D размера S x P, где D[m][n] – матч между S[1..m] и P[1..n
 4. задания периодически обрабатывают данные и передают результаты в нашу систему.
 
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/mlclst.jpg)
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/mlclst.png)
 
 
 
@@ -1712,7 +1712,7 @@ D размера S x P, где D[m][n] – матч между S[1..m] и P[1..n
 
 Так при исследовании проблем будет возможность восстановить историю или обратиться к провайдеру.
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/probvn.jpg)
+![Image alt](https://github.com/dmatwe/projects/blob/main/System_design/ФТ%20НФТ%20Сервисов/png/probvn.png)
 
 Так может выглядеть часть системы, максимально подготовленной к разбору полётов
 
