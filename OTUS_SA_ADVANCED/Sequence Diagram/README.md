@@ -1,4 +1,40 @@
+[1. Чек-лист проведения интеграции](#s1)
+<br/>
+[2. Уровни абстракции](#s2)
+<br/>
+[3. Описание системных функций](#s3)
+<br/>
+[4. Описание логики взаимодействия сервисов и приложений](#s4)
+<br/>
+[5. Описание логики взаимодействия классов](#s5)
+<br/>
+[6. Элементы](#s6)
+<br/>
+[7. Линии жизни (Lifelines)](#s7)
+<br/>
+[8. Объекты диаграммы](#s8)
+<br/>
+[9. Сообщения (Messages)](#s9)
+<br/>
+[10. Создание и удаление](#s10)
+<br/>
+[11. Внешние сообщения](#s11)
+<br/>
+[12. Альтернативные потоки](#s12)
+<br/>
+[13. Опциональное выполнение](#s13)
+<br/>
+[14. Цикл](#s14)
+<br/>
+[15. Прочие Frame](#s15)
+<br/>
+[16. Диаграмма последовательности АТМ](#s16)
+<br/>
+[17. Робот и точка](#s17)
+
+
 **Чек-лист проведения интеграции**
+<a name="s1"></a>
 
 1. Цели интеграции 
 2. Уточнить возможные способы обмена 
@@ -13,12 +49,14 @@
 
 
 **Уровни абстракции**
+<a name="s2"></a>
 
 •Описание системных функций
 •Описание логики взаимодействия сервисов и приложений
 •Описание логики взаимодействия классов
 
 **Описание системных функций**
+<a name="s3"></a>
 
 1. На базе Use Case
 2. Система как черный ящик
@@ -27,6 +65,7 @@
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Sequence%20Diagram/png/seq2.png)
 
 **Описание логики взаимодействия сервисов и приложений**
+<a name="s4"></a>
 
 1. На базе Use Case
 2. Расписываются внутренние взаимодействия
@@ -35,6 +74,7 @@
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Sequence%20Diagram/png/seq3.png)
 
 **Описание логики взаимодействия классов**
+<a name="s5"></a>
 
 1. Описывают внутреннюю логику
 2. Содержат методы классов
@@ -43,11 +83,13 @@
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Sequence%20Diagram/png/seq4.png)
 
 **Элементы**
+<a name="s6"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Sequence%20Diagram/png/seq5.png)
 
 
 **Линии жизни (Lifelines)**
+<a name="s7"></a>
 
 1. Lifeline – линия жизни объекта в рамках последовательности
 2. Activation Bar – плашка активации – период активности объекта в рамках времени жизни
@@ -55,6 +97,7 @@
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Sequence%20Diagram/png/seq6.png)
 
 **Объекты диаграммы**
+<a name="s8"></a>
 
 1. Имя объекта – участника взаимодействия (модуль, интерфейс, сервис), если тип не принципиален
 2. Актор (активный пользователь) – запустивший взаимодействие, если есть связь с Use Case
@@ -65,6 +108,7 @@
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Sequence%20Diagram/png/seq7.png)
 
 **Сообщения (Messages)**
+<a name="s9"></a>
 
 1. Синхронное сообщение – отправитель ожидает ответа от получателя
 2. Асинхронное сообщение - отправитель не ожидает ответа от получателя и может выполнять свою последовательность дальше3. 
@@ -73,6 +117,7 @@
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Sequence%20Diagram/png/seq8.png)
 
 **Создание и удаление**
+<a name="s10"></a>
 
 1. Create – создание объекта в ходе последовательности
 2. Destroy – уничтожение объекта из памяти
@@ -86,6 +131,7 @@
 
 
 **Внешние сообщения** 
+<a name="s11"></a>
 
 1. Lost message – сообщение, отправленное адресату вне диаграммы, т.е. событие приема сообщения отсутствует или не имеет значения
 2. Found message – сообщение, полученное от адресата вне диаграммы, т.е. событие отправки сообщения отсутствует или не имеет значения
@@ -93,6 +139,7 @@
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Sequence%20Diagram/png/seq11.png)
 
 **Альтернативные потоки**
+<a name="s12"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Sequence%20Diagram/png/seq12.png)
 
@@ -100,6 +147,7 @@
 
 
 **Опциональное выполнение**
+<a name="s13"></a>
 
 ***Opt Frame*** аналогичен Alt, однако в нем отсутствует блок else.
 
@@ -113,6 +161,7 @@
 
 
 **Цикл**
+<a name="s14"></a>
 
 ***Loop Frame*** позволяет описать цикл обработки запросов, пока выполняется определенное условие.
 
@@ -121,6 +170,7 @@
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Sequence%20Diagram/png/seq141.png)
 
 **Прочие Frame (практически не используются в реальной жизни)**
+<a name="s15"></a>
 
 1. Break – работает аналогично opt, однако предназначено для обработки исключений (ошибок).
 2. Parallel – описание параллельных потоков последовательности
@@ -134,10 +184,12 @@
 
 
 **Диаграмма последовательности АТМ**
+<a name="s16"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Sequence%20Diagram/png/seqbank.png)
 
 **Диаграмма последовательности Робот и точка**
+<a name="s17"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Sequence%20Diagram/png/sq.png)
 
