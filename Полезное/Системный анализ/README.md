@@ -182,6 +182,9 @@
 
 
 
+**Нотации и диаграммы**
+[1. UML sequence (Диаграмма последовательности)](https://github.com/dmatwe/projects/tree/main/KARPOV_DE/ПРОЕКТИРОВАНИЕ%20DWH)
+
 **Mind map требований**
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/Полезное/Системный%20анализ/png/map1.png)
