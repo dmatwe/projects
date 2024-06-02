@@ -1,6 +1,29 @@
-﻿**Use Case диаграмма** 
+﻿**Цель Use Case**
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Use%20case/png/u3.png)
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Use%20case/заказ.png)
+**Use Case пример** 
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Use%20case/png/u.png)
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Use%20case/png/u1.png)
+
+***include*** - обязательный кейс
+
+***extend*** - дополнительный кейс, необязательно 
+
+
+**Use Case пример** 
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Use%20case/png/u2.png)
+
+
+**Use Case АТМ** 
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Use%20case/png/u4.png)
+
+
+**Use Case диаграмма** 
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Use%20case/png/заказ.png)
 
 **Название** : Оформить возврат
 
