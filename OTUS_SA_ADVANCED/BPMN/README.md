@@ -1,4 +1,134 @@
-﻿**BPMN бизнес-процесса оформление заказа**
+﻿**Виды BPMN**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b1.png)
+
+**Объекты потока**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b2.png)
+
+**Объекты данных, соединения, дорожки, артефакты**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b3.png)
+
+**Понятие токена**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b4.png)
+
+**Уровни моделей BPMN**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b5.png)
+
+**Согласовательный уровень**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b6.png)
+
+**Аналитический уровень**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b7.png)
+
+
+**Исполняемый уровень**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b9.png)
+
+
+**Разветвляющие шлюзы**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b8.png)
+
+
+**Включающий шлюз**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b10.png)
+
+
+**Событийный шлюз**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b13.png)
+
+
+**Шлюзы слияния**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b11.png)
+
+
+**Комплексный шлюз**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b12.png)
+
+
+**Действия**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b14.png)
+
+**Задачи**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b15.png)
+
+
+**Получение/отправка сообщения**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b16.png)
+
+
+**Бизнес-правило**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b17.png)
+
+**Подпроцессы**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b18.png)
+
+
+**Немного о событийных подпроцессах**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b19.png)
+
+
+**Вызов действия (Call Activity)**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b20.png)
+
+
+**Маркеры задач**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b21.png)
+
+
+**Виды событий**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b22.png)
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b23.png)
+
+**События сообщений**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b24.png)
+
+**Таймеры**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b25.png)
+
+
+**Условные события**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b26.png)
+
+
+**Эскалация**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b27.png)
+
+**Сигнал**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b28.png)
+
+
+**Останов**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/png/b29.png)
+
+**BPMN бизнес-процесса оформление заказа**
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/BPMN/Робот%20и%20точка%20оформление%20заказа.png)
 
