@@ -186,7 +186,10 @@
 <br/>
 [1. UML sequence (Диаграмма последовательности)](https://github.com/dmatwe/projects/tree/main/OTUS_SA_ADVANCED/Sequence%20Diagram)
 <br/>
-[2. Use Case (Сценарий использования)](https://github.com/dmatwe/projects/tree/main/OTUS_SA_ADVANCED/Use%20case#u7)
+[2. Use Case (Сценарий использования)](https://github.com/dmatwe/projects/tree/main/OTUS_SA_ADVANCED/Use%20case)
+<br/>
+[3. BPMN](https://github.com/dmatwe/projects/tree/main/OTUS_SA_ADVANCED/BPMN)
+
 
 
 **Mind map требований**
