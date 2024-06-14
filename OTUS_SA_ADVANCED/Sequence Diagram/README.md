@@ -125,7 +125,7 @@
 2. Destroy – уничтожение объекта из памяти
 
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Sequence%20Diagram/png/seq9.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Sequence%20Diagram/png/del.png)
 
 3. Self-message – вызов объектом самого себя: другого метода или рекурсивный вызов
 
