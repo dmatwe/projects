@@ -1,5 +1,6 @@
 # Сохраните файл и запустите приложение с помощью `uvicorn` (в консоли): uvicorn main:app --reload
 
+# Документацию можете посмотреть по ссылкам http://127.0.0.1:8000/docs и http://127.0.0.1:8000/redoc (альтернативная).
 
 ***GET Hello World***
 
@@ -50,4 +51,16 @@ def root():
 
 </html>
 
+```
+
+***Добавление дополнительных маршрутов / ***
+
+***http://127.0.0.1:8000/custom***
+
+```python 
+
+# новый роут
+@app.get("/custom")
+def read_custom_message():
+    return {"message": "This is a custom message!"}
 ```
