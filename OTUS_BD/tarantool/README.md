@@ -1,3 +1,4 @@
+
 **Устройства Tarantool**
 
 
@@ -14,6 +15,12 @@
 ***Tarantool*** - NoSQL бд (язык Lua), но есть ограниченный функционал SQL, на языке Lua в tarantool можно реализовать приложение и код будет исполняться в виде процесса работы приложения.
 <br/>
 ***Lua*** (функции, процедуры)
+
+
+**Термины**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t9.png)
+
 
 ***Устройство Tarantool***
 
@@ -46,6 +53,52 @@
 ***Relay*** - системный поток репликации, который вычитывает Xlog (update, insert и тд)
 
 ***Applier*** - файбер принимает данные и записывает в арену
+
+
+**Старт Tarantool**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t4.png)
+
+
+```bash 
+box.cfg{}
+```
+
+***memtx*** - движок оперативной памяти
+
+
+**LauJIT**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t5.png)
+
+
+**Файбер и многозадачность**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t6.png)
+
+**Сервер приложений**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t7.png)
+
+**Tarantool платформа**
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t8.png)
+
+**Типы данных**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t10.png)
+
+**Запросы**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t11.png)
+
+**Как создать таблицы**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t12.png)
+
+
+
+
+
 
 
 ***Start a Tarantool instance***
