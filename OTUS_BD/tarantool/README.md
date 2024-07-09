@@ -119,3 +119,85 @@ docker run \
 docker exec -t -i app-instance-001 console
 
 ```
+
+
+***Создать space***
+
+```bash 
+box.schema.space.create('products')
+```
+
+
+***Посмотреть созданный space***
+```bash 
+ box.space.products
+ ```
+
+***Создать primary индекс для space***
+
+***Задает ограничение на уникальность первого атрибута для тапла в space***
+
+ ```bash 
+box.space.products:create_index("pri")
+ ```
+
+***Вставить данные в space***
+
+ ```bash 
+box.space.products:insert{1,2,3}
+
+box.space.products:insert{2,2,3, 'abc'}
+
+ ```
+
+ ***Select из space***
+
+
+```bash 
+ box.space.products:select({}, {limit= 10})
+```
+
+***удалить тапл из space по первичному ключу (индексу)***
+
+```bash 
+box.space.products:delete({1})
+```
+
+
+***Типы индексов***
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t14.png)
+
+***Индексы по 2 полям***
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t15.png)
+
+***Select индекса по итератору (эквивалент)***
+
+```bash 
+box.space.products:select({2}, {iterator="EQ"})
+```
+***Select индекса по итератору (больше чем)***
+
+
+```bash 
+box.space.products:select({1}, {iterator="GT"})
+```
+
+***Select индекса по итератору (меньше чем)***
+
+
+```bash 
+box.space.products:select({1}, {iterator="LT"})
+```
+
+
+***Select индекса по итератору (по убыванию)***
+```bash 
+box.space.products:select({1}, {iterator="REO"})
+```
+
+
+***Файловая архитектура***
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t17.png)
