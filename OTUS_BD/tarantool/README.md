@@ -201,3 +201,88 @@ box.space.products:select({1}, {iterator="REO"})
 ***Файловая архитектура***
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t17.png)
+
+```bash 
+box.snapshot()
+```
+
+***Журнал транзакции***
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t18.png)
+
+***Snapshot***
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t19.png)
+
+Тарантул по умолчанию хрнаит 2 последних снапшота, filecollector чистит
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t20.png)
+
+
+**Обработка запросов**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t21.png)
+
+1. Приложение подключается к Tarantool и отправляет запрос через IProto 
+2. Запросы складываются в буфер между потоками IProto (парсинг, валидация запросов) и TX (работа с данными в арене)
+3. TX забирает и исполняет запросы и передает в буфер TX / WAL (загрузка транзакций на жесткий диск, записи файла XLOG)
+4. SNAPD - вычитывает все таблички и делает SNAPSHOT
+
+**Применение Tarantool**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t22.png)
+
+1. Key-value хранилище (кеш, персистентность)
+2. Замена Kafka, RabbitMQ
+3. Keychain
+4. Профили пользователей
+5. Промежуточное состояние тасков, статусы
+6. Система лояльности
+
+Можно использовать вместо Postgres (основная СУБД), но необходимо позаботиться об оперативной памяти на сервере 
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t23.png)
+
+
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t24.png)
+
+
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t25.png)
+
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t26.png)
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t27.png)
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t28.png)
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t29.png)
+
+
+
+**Репликация**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r1.png)
+
+**Асинхронная репликация**
+
+Данные, которые попали на мастер реплики получают не сразу
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r2.png)
+
+**Ограничения репликации**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r3.png)
+
+**Устройство репликации**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r4.png)
+
+**Топологии репликации**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r5.png)
+
+1. Однонаправленная - мастер отправляет данные на реплику, при смене мастера репликация сломается
+2. Двунаправленная - можно переключать мастера между узлами, но мастер не знает только про соседний узел
