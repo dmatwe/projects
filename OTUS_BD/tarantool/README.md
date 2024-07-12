@@ -297,3 +297,22 @@ box.snapshot()
 ```bash 
 box.cfg{replication = {"localhost:3302", "localhost:3301"}}
 ```
+
+**Удаление реплики**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r7.png)
+
+**LSN XLOG**
+
+Порядковый номер записи в XLOG
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r8.png)
+
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r9.png)
+
+
+Смена мастера на узел Б
+
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r10.png)
