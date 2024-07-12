@@ -316,3 +316,46 @@ box.cfg{replication = {"localhost:3302", "localhost:3301"}}
 
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r10.png)
+
+
+**Векторные часы**
+
+***совокупность всех последних LSN - актуальное состояние***
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r11.png)
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r12.png)
+
+**Переключение лидера**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r13.png)
+
+**Нереплицируемые спейсы**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r14.png)
+
+
+**Топология leader-leader**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r15.png)
+
+**Проблема асинхронной репликации**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r16.png)
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r18.png)
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r17.png)
+
+**Синхронной репликация**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r19.png)
+
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r20.png)
+
+***Топология звезда***
+
+Мастер должен знать про каждую из реплик
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r21.png)
