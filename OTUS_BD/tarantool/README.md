@@ -361,4 +361,57 @@ box.cfg{replication = {"localhost:3302", "localhost:3301"}}
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r21.png)
 
 Только DDL (Insert/update/Delete)
+
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r22.png)
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r23.png)
+
+**Выбор лидера**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r24.png)
+
+**Шардинг (горизонтальное масштабирование)**
+
+***Storages*** - репликасеты, оди и те же спейсы, но данные разные (части)
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r30.png)
+
+
+***Routes*** - перенаправляют запросы в Storages
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r28.png)
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r25.png)
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r26.png)
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r27.png)
+
+**Выполнение запроса из Routes**
+
+Взаимодействие через API
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r29.png)
+
+
+**Добавление репликасета, ребалансер**
+
+При добавлении бакеты старых репликасетов переходят на новый репликасет, за переправку бакето (пользовательские данные)в отвечает ребалансер бакетов
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r31.png)
+
+1. При переправке бакетов, ставится ограничение на запись в бакет
+2. После усешной преправки, ставится ограничение на чтение бакета на старом репликасете 
+3. Удаление бакета на старом репликасете происходит фоновым процессом 
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r32.png)
+
+
+**Ограничения для ребалансер**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r33.png)
+
+**Нагрузка на PROD**
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r34.png)
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r35.png)
