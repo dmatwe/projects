@@ -359,3 +359,6 @@ box.cfg{replication = {"localhost:3302", "localhost:3301"}}
 Мастер должен знать про каждую из реплик
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r21.png)
+
+Только DDL (Insert/update/Delete)
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r22.png)
