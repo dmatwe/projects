@@ -527,3 +527,31 @@ box.space.products:insert{2,2,3, 'abc'}
 ```bash 
 box.space.products:delete({1})
 ```
+
+
+***Select индекса по итератору (эквивалент)***
+<a name="t13"></a>
+
+
+```bash 
+box.space.products:select({2}, {iterator="EQ"})
+```
+***Select индекса по итератору (больше чем)***
+
+
+```bash 
+box.space.products:select({1}, {iterator="GT"})
+```
+
+***Select индекса по итератору (меньше чем)***
+
+
+```bash 
+box.space.products:select({1}, {iterator="LT"})
+```
+
+
+***Select индекса по итератору (по убыванию)***
+```bash 
+box.space.products:select({1}, {iterator="REO"})
+```
