@@ -153,74 +153,6 @@
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t12.png)
 
 
-
-
-
-
-
-***Start a Tarantool instance***
-
-```bash 
-
-docker run \
-  --name app-instance-001 \
-  -p 3301:3301 -d \
-  tarantool/tarantool
-
-```
-
-***Connect to a running Tarantool instance***
-
-```bash 
-
-docker exec -t -i app-instance-001 console
-
-```
-
-
-***Создать space***
-
-```bash 
-box.schema.space.create('products')
-```
-
-
-***Посмотреть созданный space***
-```bash 
- box.space.products
- ```
-
-***Создать primary индекс для space***
-
-***Задает ограничение на уникальность первого атрибута для тапла в space***
-
- ```bash 
-box.space.products:create_index("pri")
- ```
-
-***Вставить данные в space***
-
- ```bash 
-box.space.products:insert{1,2,3}
-
-box.space.products:insert{2,2,3, 'abc'}
-
- ```
-
- ***Select из space***
-
-
-```bash 
- box.space.products:select({}, {limit= 10})
-```
-
-***удалить тапл из space по первичному ключу (индексу)***
-
-```bash 
-box.space.products:delete({1})
-```
-
-
 ***Типы индексов***
 <a name="t12"></a>
 
@@ -505,3 +437,72 @@ box.cfg{replication = {"localhost:3302", "localhost:3301"}}
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r34.png)
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r35.png)
+
+
+
+
+
+
+
+***Start a Tarantool instance***
+
+<a name="t35"></a>
+```bash 
+
+docker run \
+  --name app-instance-001 \
+  -p 3301:3301 -d \
+  tarantool/tarantool
+
+```
+
+***Connect to a running Tarantool instance***
+
+```bash 
+
+docker exec -t -i app-instance-001 console
+
+```
+
+
+***Создать space***
+
+```bash 
+box.schema.space.create('products')
+```
+
+
+***Посмотреть созданный space***
+```bash 
+ box.space.products
+ ```
+
+***Создать primary индекс для space***
+
+***Задает ограничение на уникальность первого атрибута для тапла в space***
+
+ ```bash 
+box.space.products:create_index("pri")
+ ```
+
+***Вставить данные в space***
+
+ ```bash 
+box.space.products:insert{1,2,3}
+
+box.space.products:insert{2,2,3, 'abc'}
+
+ ```
+
+ ***Select из space***
+
+
+```bash 
+ box.space.products:select({}, {limit= 10})
+```
+
+***удалить тапл из space по первичному ключу (индексу)***
+
+```bash 
+box.space.products:delete({1})
+```
