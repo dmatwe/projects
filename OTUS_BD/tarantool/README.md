@@ -42,7 +42,7 @@
 <br/>
 [22. Топологии репликации](#t22)
 <br/>
-[23. Топологии репликации](#t23)
+[23. Настройка каналов репликации](#t23)
 <br/>
 [24. Топологии репликации](#t24)
 <br/>
@@ -381,6 +381,7 @@ box.cfg{replication = {"localhost:3302", "localhost:3301"}}
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r7.png)
 
 **LSN XLOG**
+<a name="t24"></a>
 
 Порядковый номер записи в XLOG
 
@@ -397,6 +398,7 @@ box.cfg{replication = {"localhost:3302", "localhost:3301"}}
 
 
 **Векторные часы**
+<a name="t25"></a>
 
 ***совокупность всех последних LSN - актуальное состояние***
 
@@ -405,19 +407,23 @@ box.cfg{replication = {"localhost:3302", "localhost:3301"}}
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r12.png)
 
 **Переключение лидера**
+<a name="t26"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r13.png)
 
 **Нереплицируемые спейсы**
+<a name="t27"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r14.png)
 
 
 **Топология leader-leader**
+<a name="t28"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r15.png)
 
 **Проблема асинхронной репликации**
+<a name="t29"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r16.png)
 
@@ -425,7 +431,8 @@ box.cfg{replication = {"localhost:3302", "localhost:3301"}}
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r17.png)
 
-**Синхронной репликация**
+**Синхронная репликация**
+<a name="t30"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r19.png)
 
@@ -445,10 +452,12 @@ box.cfg{replication = {"localhost:3302", "localhost:3301"}}
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r23.png)
 
 **Выбор лидера**
+<a name="t31"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r24.png)
 
 **Шардинг (горизонтальное масштабирование)**
+<a name="t32"></a>
 
 ***Storages*** - репликасеты, оди и те же спейсы, но данные разные (части)
 
@@ -472,6 +481,7 @@ box.cfg{replication = {"localhost:3302", "localhost:3301"}}
 
 
 **Добавление репликасета, ребалансер**
+<a name="t33"></a>
 
 При добавлении бакеты старых репликасетов переходят на новый репликасет, за переправку бакето (пользовательские данные)в отвечает ребалансер бакетов
 
@@ -489,6 +499,8 @@ box.cfg{replication = {"localhost:3302", "localhost:3301"}}
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r33.png)
 
 **Нагрузка на PROD**
+<a name="t34"></a>
+
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r34.png)
 
