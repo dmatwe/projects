@@ -1,6 +1,21 @@
 
-**Устройства Tarantool**
+<br/>
+[1. Глоссарий](#t1)
+<br/>
+[2. Устройство](#t2)
+<br/>
 
+
+
+**Глоссарий**
+<a name="t1"></a>
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t9.png)
+
+
+
+**Устройство Tarantool**
+<a name="t2"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t1.png)
 
@@ -16,10 +31,6 @@
 <br/>
 ***Lua*** (функции, процедуры)
 
-
-**Термины**
-
-![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t9.png)
 
 
 ***Устройство Tarantool***
