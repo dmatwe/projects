@@ -22,7 +22,12 @@
 <br/>
 [12. Типы индексов](#t12)
 <br/>
-
+[13. Select индекса (ASC/DESC/<>)](#t13)
+<br/>
+[14. Wal/Snapshot](#t14)
+<br/>
+[15. Типы](#t12)
+<br/>
 
 
 **Глоссарий**
@@ -118,10 +123,12 @@
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t10.png)
 
 **Запросы**
+<a name="t10"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t11.png)
 
 **Как создать таблицы**
+<a name="t11"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t12.png)
 
@@ -195,6 +202,8 @@ box.space.products:delete({1})
 
 
 ***Типы индексов***
+<a name="t12"></a>
+
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t14.png)
 
@@ -229,6 +238,7 @@ box.space.products:select({1}, {iterator="REO"})
 
 
 ***Файловая архитектура***
+<a name="t10"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t17.png)
 
