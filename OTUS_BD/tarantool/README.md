@@ -316,25 +316,33 @@ box.snapshot()
 
 
 
-**Репликация**
+**Виды репликации**
+<a name="t18"></a>
+
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r1.png)
 
 **Асинхронная репликация**
+<a name="t19"></a>
+
 
 Данные, которые попали на мастер реплики получают не сразу
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r2.png)
 
 **Ограничения репликации**
+<a name="t20"></a>
+
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r3.png)
 
 **Устройство репликации**
+<a name="t21"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r4.png)
 
 **Топологии репликации**
+<a name="t22"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r5.png)
 
@@ -346,7 +354,8 @@ box.snapshot()
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/r6.png)
 
-***настройка каналов репликации***
+**настройка каналов репликации**
+<a name="t23"></a>
 
 ```bash 
 box.cfg{replication = {"localhost:3302", "localhost:3301"}}
