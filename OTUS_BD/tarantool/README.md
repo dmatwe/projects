@@ -26,8 +26,13 @@
 <br/>
 [14. Wal/Snapshot](#t14)
 <br/>
-[15. Типы](#t12)
+[15. Обработка запросов](#t15)
 <br/>
+[16. Применение Tarantool](#t16)
+<br/>
+[17. Сходства и различия от других БД](#t17)
+<br/>
+
 
 
 **Глоссарий**
@@ -212,6 +217,8 @@ box.space.products:delete({1})
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t15.png)
 
 ***Select индекса по итератору (эквивалент)***
+<a name="t13"></a>
+
 
 ```bash 
 box.space.products:select({2}, {iterator="EQ"})
@@ -238,7 +245,9 @@ box.space.products:select({1}, {iterator="REO"})
 
 
 ***Файловая архитектура***
-<a name="t10"></a>
+<a name="t14"></a>
+
+
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t17.png)
 
@@ -288,6 +297,7 @@ box.snapshot()
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t24.png)
 
 
+**Сходства и различия от других БД**
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t25.png)
 
