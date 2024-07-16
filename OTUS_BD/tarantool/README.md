@@ -2,6 +2,26 @@
 <br/>
 [2. Устройство](#t2)
 <br/>
+[3. Репликация](#t3)
+<br/>
+[4. Запуск](#t4)
+<br/>
+[5. LauJIT](#t5)
+<br/>
+[6. Файбер](#t6)
+<br/>
+[7. Сервер приложений](#t7)
+<br/>
+[8. Tarantool платформа](#t8)
+<br/>
+[9. Типы данных](#t9)
+<br/>
+[10. Запросы](#t10)
+<br/>
+[11. Как создать таблицы](#t11)
+<br/>
+[12. Типы индексов](#t12)
+<br/>
 
 
 
@@ -30,10 +50,6 @@
 ***Lua*** (функции, процедуры)
 
 
-
-***Устройство Tarantool***
-
-
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t2.png)
 
 
@@ -53,6 +69,7 @@
 
 
 **Репликация Tarantool**
+<a name="t3"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t3.png)
 
@@ -65,34 +82,38 @@
 
 
 **Старт Tarantool**
+<a name="t4"></a>
+
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t4.png)
 
-
-```bash 
-box.cfg{}
-```
 
 ***memtx*** - движок оперативной памяти
 
 
 **LauJIT**
+<a name="t5"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t5.png)
 
 
 **Файбер и многозадачность**
+<a name="t6"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t6.png)
 
 **Сервер приложений**
+<a name="t7"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t7.png)
 
 **Tarantool платформа**
+<a name="t8"></a>
+
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t8.png)
 
 **Типы данных**
+<a name="t9"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t10.png)
 
