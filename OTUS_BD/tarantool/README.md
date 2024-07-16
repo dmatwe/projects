@@ -269,6 +269,8 @@ box.snapshot()
 
 
 **Обработка запросов**
+<a name="t15"></a>
+
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t21.png)
 
@@ -278,6 +280,7 @@ box.snapshot()
 4. SNAPD - вычитывает все таблички и делает SNAPSHOT
 
 **Применение Tarantool**
+<a name="t16"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t22.png)
 
@@ -298,6 +301,7 @@ box.snapshot()
 
 
 **Сходства и различия от других БД**
+<a name="t17"></a>
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_BD/tarantool/png/t25.png)
 
