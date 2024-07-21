@@ -18,7 +18,7 @@
 ***Понятие проблемы***
 
 
-![Image alt](https://github.com/dmatwe/projects/tree/main/OTUS_SA_ADVANCED/Стейкхолдеры/png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_ADVANCED/Стейкхолдеры/png/s1.png)
 
 Трудность, которую невозможно решить в настоящее время с использованием имеющихся под
 рукой ресурсов.
