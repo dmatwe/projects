@@ -54,8 +54,59 @@
 
 ***DDD-представление***
 
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_TEAMLEAD/System_design/DDD.png)
+
 ***SOA-представление***
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_TEAMLEAD/System_design/seq.png)
+
+
+```json
+@startuml
+actor "Сотрудник" as A
+box Система внедрения нового продукта #LightGreen   
+participant  "Интерфейс разработки нового продукта" as B 
+participant  "Дашборд с ожиданиями клиентов" as С 
+participant  "Нарезчик задач для разработки нового продукта" as D
+participant  "Система управления персоналом" as E
+participant  "Другие внешние системы" as F
+end box 
+hide footbox
+autonumber "<b>[0]"  
+A -> B++:  Запросить отчет
+B -> С++:  GET-запрос отчета по ожиданиям клиентов
+return Ответ 200: ОК
+A <--  B:  Отчет в виде дашборда 
+B--
+
+A -> B++:  Создать цепочку задач для нового продукта
+B ->  D++:  POST-запрос создания задач 
+D ->  E++:  POST-запрос Назначить свободного исполнителя для задачи 
+return Ответ 200: ОК
+return Ответ 200: ОК
+A <--  B:  Уведомление об успешном создании 
+B--
+
+A -> B++:  Заполнить требования для нового продукта в задаче
+B ->  D++:  PACTH-запрос заполненить требования для нового продукта
+
+return Ответ 200: ОК
+return Ответ 200: ОК
+A <--  B:  Уведомление об успешном заполнении 
+B--
+
+
+A -> B++:  Загрузить данные нового продукта во внешние системы
+B ->  D++:  POST-запрос загрузки данных
+D ->  F++:  POST-запрос загрузки данных
+return Ответ 200: ОК
+return Ответ 200: ОК
+A <--  B:  Уведомление об успешной загрузке 
+B--
+@enduml
+```
 
 ***C4 для 3 уровней***
 
+![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_TEAMLEAD/System_design/С4.png)
 
