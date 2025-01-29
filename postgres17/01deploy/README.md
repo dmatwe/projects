@@ -187,4 +187,16 @@ postgres — имя базы данных.
 sudo su postgres
 cd 
 wget https://storage.googleapis.com/thaibus/thai_small.tar.gz && tar -xf thai_small.tar.gz && psql < thai.sql
+
+psql -d thai
+
+\timing
+
+SELECT count(*) FROM book.tickets;
+
+SELECT count(1) FROM book.tickets;
 ```
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/postgres17/01deploy/Screenshot%202025-01-29%20at%2015.58.27.png)
+
+
