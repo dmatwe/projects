@@ -233,7 +233,7 @@ explain (analyze, buffers) SELECT count(id) FROM book.tickets;
 
 ***BUFFERS***: Показывает информацию о том, сколько страниц данных было прочитано из кэша и сколько страниц было загружено из диска. Это помогает понять, насколько эффективно использовалась память и кэш.
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/postgres17/01deploy/Screenshot%202025-01-29%20at%2017.49.00.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/postgres17/01deploy/Screenshot%202025-01-29%20at%2018.05.45.png)
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/postgres17/01deploy/Screenshot%202025-01-29%20at%2017.48.23.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/postgres17/01deploy/Screenshot%202025-01-29%20at%2018.06.06.png)
 
