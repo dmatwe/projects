@@ -197,6 +197,6 @@ SELECT count(*) FROM book.tickets;
 SELECT count(1) FROM book.tickets;
 ```
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/postgres17/01deploy/Screenshot%202025-01-29%20at%2015.58.27.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/postgres17/01deploy/Screenshot%202025-01-29%20at%2016.19.00.png)
 
 
