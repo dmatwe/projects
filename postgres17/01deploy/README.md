@@ -128,4 +128,4 @@ pgbench -P 1 -T 10 postgres
 
 ***Зачем это нужно:*** Полезно для оценки текущего состояния производительности базы данных, без выполнения фактических запросов. Это может помочь выявить проблемы или узкие места в производительности.
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/postgres17/01deploy/Screenshot%202025-01-29%20at%2014.13.02.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/postgres17/01deploy/Screenshot%202025-01-29%20at%2015.48.23.png)
