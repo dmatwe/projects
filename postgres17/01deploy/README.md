@@ -71,6 +71,8 @@ echo never | sudo tee /sys/kernel/mm/transparent_hugepage/enabled
 
 https://pgconfigurator.cybertec.at/
 
+![Image alt](https://github.com/dmatwe/projects/blob/main/postgres17/01deploy/Screenshot%202025-01-29%20at%2015.14.41.png)
+
 ```json
 nano /etc/postgresql/17/main/postgresql.conf
 
