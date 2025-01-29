@@ -212,14 +212,18 @@ SELECT count(1) FROM book.tickets;
 set random_page_cost = 1;
 ```
 
-Команда выполняет следующие действия:
+***vacuum***
 
-Очищает таблицу tickets от "мертвых" строк, освобождая пространство и поддерживая производительность базы данных.
-Собирает статистику о содержимом таблицы tickets, что позволяет оптимизировать выполнение запросов к этой таблице в будущем.
+Делать после загрузки большого объема данных 
 
 ```json
 vacuum analyze book.tickets;
 ```
+
+Команда выполняет следующие действия:
+
+Очищает таблицу tickets от "мертвых" строк, освобождая пространство и поддерживая производительность базы данных.
+Собирает статистику о содержимом таблицы tickets, что позволяет оптимизировать выполнение запросов к этой таблице в будущем.
 
 ```json
 explain SELECT count(id) FROM book.tickets;
@@ -236,4 +240,60 @@ explain (analyze, buffers) SELECT count(id) FROM book.tickets;
 ![Image alt](https://github.com/dmatwe/projects/blob/main/postgres17/01deploy/Screenshot%202025-01-29%20at%2018.05.45.png)
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/postgres17/01deploy/Screenshot%202025-01-29%20at%2018.06.06.png)
+
+
+***Как ускорить count***
+
+Разница 0.01%
+
+```json
+thai=# SELECT count(*) FROM book.tickets;
+  count  
+---------
+ 5185505
+(1 row)
+
+Time: 417.973 ms
+thai=# SELECT reltuples::BIGINT AS estimate
+
+FROM pg_class
+
+WHERE oid = 'book.tickets'::regclass;
+ estimate 
+----------
+  5185492
+(1 row)
+
+Time: 0.370 ms
+```
+
+
+
+1. Отключение синхронного коммита
+
+psql -c "ALTER SYSTEM SET synchronous_commit = off;"
+
+2. Увеличение размера буфера работы
+
+psql -c "ALTER SYSTEM SET work_mem = '128MB';"  -- или больше, в зависимости от доступной памяти
+
+3. Увеличение размера буфера для операций сортировки и хеширования
+
+psql -c "ALTER SYSTEM SET maintenance_work_mem = '1GB';"  -- или больше, в зависимости от доступной памяти
+
+4. Отключение WAL (Write-Ahead Logging)
+
+psql -c "ALTER SYSTEM SET wal_level = minimal;"
+
+5. Увеличение размера WAL буфера
+
+psql -c "ALTER SYSTEM SET wal_buffers = '16MB';"
+
+6. Отключение логирования неудачных транзакций
+
+psql -c "ALTER SYSTEM SET log_statement = 'none';"
+
+7. Установка параметров для параллельной обработки
+sql
+psql -c "ALTER SYSTEM SET max_parallel_workers_per_gather = 4;"
 
