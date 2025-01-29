@@ -212,6 +212,15 @@ SELECT count(1) FROM book.tickets;
 set random_page_cost = 1;
 ```
 
+Команда выполняет следующие действия:
+
+Очищает таблицу tickets от "мертвых" строк, освобождая пространство и поддерживая производительность базы данных.
+Собирает статистику о содержимом таблицы tickets, что позволяет оптимизировать выполнение запросов к этой таблице в будущем.
+
+```json
+vacuum analyze book.tickets;
+```
+
 ```json
 explain SELECT count(id) FROM book.tickets;
 
