@@ -1,6 +1,11 @@
-**Установка Linux**
+**1. Установка Linux**
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/OTUS_SA_BASIC/9.%20Диаграмма%20классов/ооп.png)
+Яндекс облако 
+
+***Ресурсы***
+
+
+![Image alt](https://github.com/dmatwe/projects/blob/main/postgres17/01deploy/Screenshot%202025-01-29%20at%2014.13.02.png)
 
 ```json
 sudo apt update && sudo DEBIAN_FRONTEND=noninteractive apt upgrade -y && sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - && sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt -y install postgresql-17 unzip atop htop
