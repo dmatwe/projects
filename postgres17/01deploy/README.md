@@ -295,3 +295,127 @@ psql -c "ALTER SYSTEM SET log_statement = 'none';"
 sql
 psql -c "ALTER SYSTEM SET max_parallel_workers_per_gather = 4;"
 
+
+```json
+postgres@compute-vm-2-2-20-ssd-1738166070528:~$ pgbench -P 1 -T 10 postgres
+pgbench (17.2 (Ubuntu 17.2-1.pgdg24.04+1))
+starting vacuum...end.
+progress: 1.0 s, 1911.0 tps, lat 0.521 ms stddev 0.042, 0 failed
+progress: 2.0 s, 2048.0 tps, lat 0.488 ms stddev 0.025, 0 failed
+progress: 3.0 s, 1952.9 tps, lat 0.512 ms stddev 0.026, 0 failed
+progress: 4.0 s, 2010.1 tps, lat 0.497 ms stddev 0.026, 0 failed
+progress: 5.0 s, 2000.9 tps, lat 0.499 ms stddev 0.025, 0 failed
+progress: 6.0 s, 1974.1 tps, lat 0.506 ms stddev 0.025, 0 failed
+progress: 7.0 s, 2008.9 tps, lat 0.497 ms stddev 0.027, 0 failed
+progress: 8.0 s, 1934.1 tps, lat 0.517 ms stddev 0.025, 0 failed
+progress: 9.0 s, 1942.9 tps, lat 0.514 ms stddev 0.025, 0 failed
+progress: 10.0 s, 1962.1 tps, lat 0.509 ms stddev 0.024, 0 failed
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 1
+number of threads: 1
+maximum number of tries: 1
+duration: 10 s
+number of transactions actually processed: 19746
+number of failed transactions: 0 (0.000%)
+latency average = 0.506 ms
+latency stddev = 0.029 ms
+initial connection time = 3.732 ms
+tps = 1975.247684 (without initial connection time)
+postgres@compute-vm-2-2-20-ssd-1738166070528:~$ pgbench -P 1 -c 10 -T 10 postgres
+pgbench (17.2 (Ubuntu 17.2-1.pgdg24.04+1))
+starting vacuum...end.
+progress: 1.0 s, 2681.8 tps, lat 3.619 ms stddev 2.336, 0 failed
+progress: 2.0 s, 2723.8 tps, lat 3.666 ms stddev 2.246, 0 failed
+progress: 3.0 s, 2676.2 tps, lat 3.733 ms stddev 2.318, 0 failed
+progress: 4.0 s, 2706.0 tps, lat 3.688 ms stddev 2.332, 0 failed
+progress: 5.0 s, 2655.1 tps, lat 3.764 ms stddev 2.372, 0 failed
+progress: 6.0 s, 2665.0 tps, lat 3.748 ms stddev 2.280, 0 failed
+progress: 7.0 s, 2703.7 tps, lat 3.694 ms stddev 2.313, 0 failed
+progress: 8.0 s, 2726.1 tps, lat 3.663 ms stddev 2.220, 0 failed
+progress: 9.0 s, 2707.3 tps, lat 3.690 ms stddev 2.236, 0 failed
+progress: 10.0 s, 2666.9 tps, lat 3.743 ms stddev 2.285, 0 failed
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 10 s
+number of transactions actually processed: 26921
+number of failed transactions: 0 (0.000%)
+latency average = 3.703 ms
+latency stddev = 2.300 ms
+initial connection time = 25.722 ms
+tps = 2694.559324 (without initial connection time)
+postgres@compute-vm-2-2-20-ssd-1738166070528:~$ pgbench -P 1 -c 10 -j 4 -T 10 postgres
+pgbench (17.2 (Ubuntu 17.2-1.pgdg24.04+1))
+starting vacuum...end.
+progress: 1.0 s, 2665.8 tps, lat 3.666 ms stddev 2.345, 0 failed
+progress: 2.0 s, 2838.0 tps, lat 3.525 ms stddev 2.185, 0 failed
+progress: 3.0 s, 2830.1 tps, lat 3.531 ms stddev 2.262, 0 failed
+progress: 4.0 s, 2851.9 tps, lat 3.505 ms stddev 2.245, 0 failed
+progress: 5.0 s, 2894.6 tps, lat 3.457 ms stddev 2.259, 0 failed
+progress: 6.0 s, 2828.2 tps, lat 3.534 ms stddev 2.240, 0 failed
+progress: 7.0 s, 2810.1 tps, lat 3.557 ms stddev 2.146, 0 failed
+progress: 8.0 s, 2864.1 tps, lat 3.490 ms stddev 2.208, 0 failed
+progress: 9.0 s, 2890.8 tps, lat 3.458 ms stddev 2.151, 0 failed
+progress: 10.0 s, 2923.0 tps, lat 3.414 ms stddev 2.216, 0 failed
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 4
+maximum number of tries: 1
+duration: 10 s
+number of transactions actually processed: 28410
+number of failed transactions: 0 (0.000%)
+latency average = 3.515 ms
+latency stddev = 2.232 ms
+initial connection time = 19.471 ms
+tps = 2841.712417 (without initial connection time)
+postgres@compute-vm-2-2-20-ssd-1738166070528:~$ client_loop: send disconnect: Broken pipe
+(base) denis@Deniss-MacBook-Pro ~ % 
+```
+
+
+
+
+
+
+```json
+thai=# explain SELECT count(id) FROM book.tickets;
+
+                                                      QUERY PLAN                                                      
+----------------------------------------------------------------------------------------------------------------------
+ Finalize Aggregate  (cost=60908.30..60908.31 rows=1 width=8)
+   ->  Gather  (cost=60907.88..60908.29 rows=4 width=8)
+         Workers Planned: 4
+         ->  Partial Aggregate  (cost=59907.88..59907.89 rows=1 width=8)
+               ->  Parallel Index Only Scan using tickets_pkey on tickets  (cost=0.43..56667.02 rows=1296344 width=8)
+(5 rows)
+```
+
+```json
+thai=# explain (analyze, buffers) SELECT count(id) FROM book.tickets;
+
+                                                                               QUERY PLAN                                                                               
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Finalize Aggregate  (cost=60908.30..60908.31 rows=1 width=8) (actual time=738.616..743.149 rows=1 loops=1)
+   Buffers: shared hit=14175
+   ->  Gather  (cost=60907.88..60908.29 rows=4 width=8) (actual time=738.438..743.139 rows=2 loops=1)
+         Workers Planned: 4
+         Workers Launched: 1
+         Buffers: shared hit=14175
+         ->  Partial Aggregate  (cost=59907.88..59907.89 rows=1 width=8) (actual time=735.717..735.718 rows=1 loops=2)
+               Buffers: shared hit=14175
+               ->  Parallel Index Only Scan using tickets_pkey on tickets  (cost=0.43..56667.02 rows=1296344 width=8) (actual time=0.050..475.518 rows=2592752 loops=2)
+                     Heap Fetches: 0
+                     Buffers: shared hit=14175
+ Planning:
+   Buffers: shared hit=61
+ Planning Time: 0.333 ms
+ Execution Time: 743.216 ms
+(15 rows)
+```
