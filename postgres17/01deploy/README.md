@@ -38,7 +38,7 @@ psql -d thai
 
 **TEST производительности**
 
-```json
+```python
 postgres@compute-vm-2-2-20-ssd-1738228408146:/home/vmadmin$ pgbench -i postgres
 
 dropping old tables...
@@ -77,7 +77,7 @@ initial connection time = 3.439 ms
 tps = 249.872463 (without initial connection time)
 ```
 
-```json
+```python
 postgres@compute-vm-2-2-20-ssd-1738228408146:/home/vmadmin$ pgbench -P 1 -c 10 -T 10 postgres
 
 pgbench (17.2 (Ubuntu 17.2-1.pgdg24.04+1))
@@ -107,7 +107,7 @@ initial connection time = 24.945 ms
 tps = 231.331448 (without initial connection time)
 ```
 
-```json
+```python
 postgres@compute-vm-2-2-20-ssd-1738228408146:/home/vmadmin$ pgbench -P 1 -c 10 -j 4 -T 10 postgres
 
 pgbench (17.2 (Ubuntu 17.2-1.pgdg24.04+1))
@@ -138,7 +138,7 @@ tps = 184.899520 (without initial connection time)
 ```
 
 
-```json
+```python
 thai=# explain SELECT count(id) FROM book.tickets;
                                          QUERY PLAN                                         
 --------------------------------------------------------------------------------------------
@@ -165,7 +165,7 @@ thai=# explain (analyze, buffers) SELECT count(id) FROM book.tickets;
  Planning Time: 0.068 ms
  Execution Time: 684.773 ms
 (12 rows)
-```json
+```python
 
 **Настройка оптимальной производительности**
 
@@ -176,7 +176,7 @@ thai=# explain (analyze, buffers) SELECT count(id) FROM book.tickets;
 изменяем параметр swappiness в системе Linux. Этот параметр управляет тем, как система использует своп (swap) — пространство на диске, которое используется в качестве расширения оперативной памяти (RAM). Принимает значения от 0 до 100.
 Система будет стараться держать данные в оперативной памяти как можно дольше, прежде чем начать использовать своп.
 
-```json
+```python
 -- swapiness 60-> 1..10
 
 cat /proc/sys/vm/swappiness
@@ -202,7 +202,7 @@ THP обеспечивает автоматическую агрегацию с�
 Отключаете использование прозрачных больших страниц на уровне ядра. Это означает, что система не будет автоматически объединять страницы в большие страницы для процессов.
 
 отключает функцию прозрачных больших страниц (Transparent Huge Pages, THP) в Linux.
-```json
+```python
 echo never | sudo tee /sys/kernel/mm/transparent_hugepage/enabled  
 ```
 
@@ -216,14 +216,14 @@ https://pgconfigurator.cybertec.at/
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/postgres17/01deploy/Screenshot%202025-01-29%20at%2015.14.41.png)
 
-```json
+```python
 nano /etc/postgresql/17/main/postgresql.conf
 
 pg_ctlcluster 17 main stop && pg_ctlcluster 17 main start
 ```
 
 ***Инициализация базы данных***
-```json
+```python
 pgbench -i postgres
 ```
 Описание команды:
@@ -242,7 +242,7 @@ pgbench -i postgres
 
 ***Мониторинг производительности с выводом состояния***
 
-```json
+```python
 pgbench -P 1 -T 10 postgres
 ```
 
@@ -266,7 +266,7 @@ pgbench -P 1 -T 10 postgres
 ***Запуск теста с 10 клиентами***
 
 
-```json
+```python
 pgbench -P 1 -c 10 -T 10 postgres
 ```
 
@@ -291,7 +291,7 @@ postgres — имя базы данных.
 
 ***Запуск теста с 4 потоками по числу ядер***
 
-```json
+```python
 pgbench -P 1 -c 10 -j 4 -T 10 postgres
 ```
 
@@ -321,7 +321,7 @@ postgres — имя базы данных.
 
 **Select count* авторской БД Аристова**
 
-```json
+```python
 
 psql -d thai
 
@@ -343,7 +343,7 @@ SELECT count(1) FROM book.tickets;
 
 Если ваша система в основном использует индексы, и вы хотите, чтобы PostgreSQL более активно использовал их, изменение этого параметра может помочь снизить общий "стоимость" случайного доступа, что может привести к более частому использованию индексов в планах выполнения.
 
-```json
+```python
 set random_page_cost = 1;
 ```
 
@@ -351,7 +351,7 @@ set random_page_cost = 1;
 
 Делать после загрузки большого объема данных 
 
-```json
+```python
 vacuum analyze book.tickets;
 ```
 
@@ -360,7 +360,7 @@ vacuum analyze book.tickets;
 Очищает таблицу tickets от "мертвых" строк, освобождая пространство и поддерживая производительность базы данных.
 Собирает статистику о содержимом таблицы tickets, что позволяет оптимизировать выполнение запросов к этой таблице в будущем.
 
-```json
+```python
 explain SELECT count(id) FROM book.tickets;
 
 explain (analyze, buffers) SELECT count(id) FROM book.tickets;
@@ -381,7 +381,7 @@ explain (analyze, buffers) SELECT count(id) FROM book.tickets;
 
 Разница 0.01%
 
-```json
+```python
 thai=# SELECT count(*) FROM book.tickets;
   count  
 ---------
@@ -434,7 +434,7 @@ psql -c "ALTER SYSTEM SET max_parallel_workers_per_gather = 4;"
 
 ***Результаты:***
 
-```json
+```python
 postgres@compute-vm-2-2-20-ssd-1738166070528:~$ pgbench -P 1 -T 10 postgres
 
 pgbench (17.2 (Ubuntu 17.2-1.pgdg24.04+1))
@@ -464,7 +464,7 @@ initial connection time = 3.732 ms
 tps = 1975.247684 (without initial connection time)
 ```
 
-```json
+```python
 postgres@compute-vm-2-2-20-ssd-1738166070528:~$ pgbench -P 1 -c 10 -T 10 postgres
 
 pgbench (17.2 (Ubuntu 17.2-1.pgdg24.04+1))
@@ -492,9 +492,9 @@ latency average = 3.703 ms
 latency stddev = 2.300 ms
 initial connection time = 25.722 ms
 tps = 2694.559324 (without initial connection time)
-```json
+```python
 
-```json
+```python
 postgres@compute-vm-2-2-20-ssd-1738166070528:~$ pgbench -P 1 -c 10 -j 4 -T 10 postgres
 
 pgbench (17.2 (Ubuntu 17.2-1.pgdg24.04+1))
@@ -529,7 +529,7 @@ tps = 2841.712417 (without initial connection time)
 
 
 
-```json
+```python
 thai=# explain SELECT count(id) FROM book.tickets;
 
                                                       QUERY PLAN                                                      
@@ -542,7 +542,7 @@ thai=# explain SELECT count(id) FROM book.tickets;
 (5 rows)
 ```
 
-```json
+```python
 thai=# explain (analyze, buffers) SELECT count(id) FROM book.tickets;
 
 
