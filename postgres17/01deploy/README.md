@@ -27,7 +27,7 @@ sudo apt update && sudo DEBIAN_FRONTEND=noninteractive apt upgrade -y && sudo sh
 
 **Insert авторской БД Аристова**
 
-```json
+```python
 sudo su postgres
 cd 
 wget https://storage.googleapis.com/thaibus/thai_small.tar.gz && tar -xf thai_small.tar.gz && psql < thai.sql
