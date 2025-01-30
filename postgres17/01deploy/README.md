@@ -265,7 +265,7 @@ WHERE oid = 'book.tickets'::regclass;
 Time: 0.370 ms
 ```
 
-
+**Настройка интсанса на максимальную производительность не обращая внимания на ACID**
 
 1. Отключение синхронного коммита
 
@@ -295,9 +295,11 @@ psql -c "ALTER SYSTEM SET log_statement = 'none';"
 sql
 psql -c "ALTER SYSTEM SET max_parallel_workers_per_gather = 4;"
 
+***Результаты:***
 
 ```json
 postgres@compute-vm-2-2-20-ssd-1738166070528:~$ pgbench -P 1 -T 10 postgres
+
 pgbench (17.2 (Ubuntu 17.2-1.pgdg24.04+1))
 starting vacuum...end.
 progress: 1.0 s, 1911.0 tps, lat 0.521 ms stddev 0.042, 0 failed
@@ -323,7 +325,11 @@ latency average = 0.506 ms
 latency stddev = 0.029 ms
 initial connection time = 3.732 ms
 tps = 1975.247684 (without initial connection time)
+```
+
+```json
 postgres@compute-vm-2-2-20-ssd-1738166070528:~$ pgbench -P 1 -c 10 -T 10 postgres
+
 pgbench (17.2 (Ubuntu 17.2-1.pgdg24.04+1))
 starting vacuum...end.
 progress: 1.0 s, 2681.8 tps, lat 3.619 ms stddev 2.336, 0 failed
@@ -349,7 +355,11 @@ latency average = 3.703 ms
 latency stddev = 2.300 ms
 initial connection time = 25.722 ms
 tps = 2694.559324 (without initial connection time)
+```json
+
+```json
 postgres@compute-vm-2-2-20-ssd-1738166070528:~$ pgbench -P 1 -c 10 -j 4 -T 10 postgres
+
 pgbench (17.2 (Ubuntu 17.2-1.pgdg24.04+1))
 starting vacuum...end.
 progress: 1.0 s, 2665.8 tps, lat 3.666 ms stddev 2.345, 0 failed
@@ -375,8 +385,6 @@ latency average = 3.515 ms
 latency stddev = 2.232 ms
 initial connection time = 19.471 ms
 tps = 2841.712417 (without initial connection time)
-postgres@compute-vm-2-2-20-ssd-1738166070528:~$ client_loop: send disconnect: Broken pipe
-(base) denis@Deniss-MacBook-Pro ~ % 
 ```
 
 
@@ -399,6 +407,7 @@ thai=# explain SELECT count(id) FROM book.tickets;
 
 ```json
 thai=# explain (analyze, buffers) SELECT count(id) FROM book.tickets;
+
 
                                                                                QUERY PLAN                                                                               
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
