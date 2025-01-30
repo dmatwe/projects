@@ -25,7 +25,147 @@ sudo apt update && sudo DEBIAN_FRONTEND=noninteractive apt upgrade -y && sudo sh
 
 ***sudo DEBIAN_FRONTEND=noninteractive apt -y install postgresql-17 unzip atop htop*** — устанавливает PostgreSQL версии 17 и несколько утилит: unzip (для распаковки zip-архивов), atop (для мониторинга системы) и htop (для интерактивного мониторинга процессов).
 
+**Insert авторской БД Аристова**
 
+```json
+sudo su postgres
+cd 
+wget https://storage.googleapis.com/thaibus/thai_small.tar.gz && tar -xf thai_small.tar.gz && psql < thai.sql
+
+psql -d thai
+```
+
+
+**TEST производительности**
+
+```json
+postgres@compute-vm-2-2-20-ssd-1738228408146:/home/vmadmin$ pgbench -i postgres
+
+dropping old tables...
+creating tables...
+generating data (client-side)...
+100000 of 100000 tuples (100%) of pgbench_accounts done (elapsed 0.07 s, remaini                                                                                vacuuming...
+creating primary keys...
+done in 1.08 s (drop tables 0.01 s, create tables 0.01 s, client-side generate 0.91 s, vacuum 0.06 s, primary keys 0.10 s).
+
+postgres@compute-vm-2-2-20-ssd-1738228408146:/home/vmadmin$ pgbench -P 1 -T 10 postgres
+
+pgbench (17.2 (Ubuntu 17.2-1.pgdg24.04+1))
+starting vacuum...end.
+progress: 1.0 s, 369.0 tps, lat 2.675 ms stddev 2.499, 0 failed
+progress: 2.0 s, 265.0 tps, lat 3.792 ms stddev 2.981, 0 failed
+progress: 3.0 s, 256.0 tps, lat 3.838 ms stddev 3.993, 0 failed
+^[[Aprogress: 4.0 s, 171.0 tps, lat 5.826 ms stddev 6.481, 0 failed
+progress: 5.0 s, 171.0 tps, lat 5.902 ms stddev 6.043, 0 failed
+^[[Bprogress: 6.0 s, 298.0 tps, lat 3.386 ms stddev 3.032, 0 failed
+progress: 7.0 s, 190.0 tps, lat 5.223 ms stddev 4.514, 0 failed
+progress: 8.0 s, 213.0 tps, lat 4.731 ms stddev 3.781, 0 failed
+progress: 9.0 s, 231.0 tps, lat 4.314 ms stddev 4.401, 0 failed
+progress: 10.0 s, 333.0 tps, lat 3.016 ms stddev 2.858, 0 failed
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 1
+number of threads: 1
+maximum number of tries: 1
+duration: 10 s
+number of transactions actually processed: 2498
+number of failed transactions: 0 (0.000%)
+latency average = 4.002 ms
+latency stddev = 4.087 ms
+initial connection time = 3.439 ms
+tps = 249.872463 (without initial connection time)
+```
+
+```json
+postgres@compute-vm-2-2-20-ssd-1738228408146:/home/vmadmin$ pgbench -P 1 -c 10 -T 10 postgres
+
+pgbench (17.2 (Ubuntu 17.2-1.pgdg24.04+1))
+starting vacuum...end.
+progress: 1.0 s, 420.0 tps, lat 22.413 ms stddev 19.388, 0 failed
+progress: 2.0 s, 346.0 tps, lat 28.649 ms stddev 25.626, 0 failed
+progress: 3.0 s, 349.0 tps, lat 29.268 ms stddev 27.448, 0 failed
+progress: 4.0 s, 305.0 tps, lat 32.969 ms stddev 24.916, 0 failed
+progress: 5.0 s, 183.0 tps, lat 49.397 ms stddev 65.586, 0 failed
+progress: 6.0 s, 125.0 tps, lat 79.463 ms stddev 69.576, 0 failed
+progress: 7.0 s, 124.0 tps, lat 84.752 ms stddev 82.606, 0 failed
+progress: 8.0 s, 168.0 tps, lat 61.004 ms stddev 68.041, 0 failed
+progress: 9.0 s, 168.0 tps, lat 58.770 ms stddev 49.726, 0 failed
+progress: 10.0 s, 128.0 tps, lat 77.273 ms stddev 61.049, 0 failed
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 10 s
+number of transactions actually processed: 2326
+number of failed transactions: 0 (0.000%)
+latency average = 43.063 ms
+latency stddev = 49.961 ms
+initial connection time = 24.945 ms
+tps = 231.331448 (without initial connection time)
+```
+
+```json
+postgres@compute-vm-2-2-20-ssd-1738228408146:/home/vmadmin$ pgbench -P 1 -c 10 -j 4 -T 10 postgres
+
+pgbench (17.2 (Ubuntu 17.2-1.pgdg24.04+1))
+starting vacuum...end.
+progress: 1.0 s, 274.0 tps, lat 34.788 ms stddev 28.657, 0 failed
+progress: 2.0 s, 285.0 tps, lat 33.619 ms stddev 29.660, 0 failed
+progress: 3.0 s, 186.0 tps, lat 55.138 ms stddev 44.187, 0 failed
+progress: 4.0 s, 125.0 tps, lat 79.418 ms stddev 74.529, 0 failed
+progress: 5.0 s, 105.0 tps, lat 95.105 ms stddev 67.487, 0 failed
+progress: 6.0 s, 130.0 tps, lat 79.140 ms stddev 90.648, 0 failed
+progress: 7.0 s, 176.0 tps, lat 56.055 ms stddev 51.439, 0 failed
+progress: 8.0 s, 134.0 tps, lat 74.027 ms stddev 57.862, 0 failed
+progress: 9.0 s, 134.0 tps, lat 74.324 ms stddev 81.388, 0 failed
+progress: 10.0 s, 293.0 tps, lat 34.880 ms stddev 33.320, 0 failed
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 4
+maximum number of tries: 1
+duration: 10 s
+number of transactions actually processed: 1852
+number of failed transactions: 0 (0.000%)
+latency average = 54.008 ms
+latency stddev = 56.875 ms
+initial connection time = 17.714 ms
+tps = 184.899520 (without initial connection time)
+```
+
+
+```json
+thai=# explain SELECT count(id) FROM book.tickets;
+                                         QUERY PLAN                                         
+--------------------------------------------------------------------------------------------
+ Finalize Aggregate  (cost=86982.32..86982.33 rows=1 width=8)
+   ->  Gather  (cost=86982.10..86982.31 rows=2 width=8)
+         Workers Planned: 2
+         ->  Partial Aggregate  (cost=85982.10..85982.11 rows=1 width=8)
+               ->  Parallel Seq Scan on tickets  (cost=0.00..80580.88 rows=2160488 width=8)
+(5 rows)
+
+thai=# explain (analyze, buffers) SELECT count(id) FROM book.tickets;
+                                                                  QUERY PLAN                                                                  
+----------------------------------------------------------------------------------------------------------------------------------------------
+ Finalize Aggregate  (cost=86982.32..86982.33 rows=1 width=8) (actual time=683.491..684.737 rows=1 loops=1)
+   Buffers: shared hit=1 read=58975
+   ->  Gather  (cost=86982.10..86982.31 rows=2 width=8) (actual time=681.299..684.729 rows=3 loops=1)
+         Workers Planned: 2
+         Workers Launched: 2
+         Buffers: shared hit=1 read=58975
+         ->  Partial Aggregate  (cost=85982.10..85982.11 rows=1 width=8) (actual time=674.848..674.850 rows=1 loops=3)
+               Buffers: shared hit=1 read=58975
+               ->  Parallel Seq Scan on tickets  (cost=0.00..80580.88 rows=2160488 width=8) (actual time=0.062..356.149 rows=1728502 loops=3)
+                     Buffers: shared hit=1 read=58975
+ Planning Time: 0.068 ms
+ Execution Time: 684.773 ms
+(12 rows)
+```json
 
 **Настройка оптимальной производительности**
 
@@ -179,12 +319,9 @@ postgres — имя базы данных.
 
 
 
-**Insert авторской БД Аристова**
+**Select count* авторской БД Аристова**
 
 ```json
-sudo su postgres
-cd 
-wget https://storage.googleapis.com/thaibus/thai_small.tar.gz && tar -xf thai_small.tar.gz && psql < thai.sql
 
 psql -d thai
 
