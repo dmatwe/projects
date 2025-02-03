@@ -156,7 +156,7 @@ sudo systemctl start pgbouncer
 sudo systemctl status pgbouncer
 
 ```
-8 клиентов
+**8 клиентов**
 
 ```python
 pgbench -c 8 -j 4 -T 10 -f ~/workload.sql -U postgres -h localhost -p 6432 thai -n | grep -E 'clients|tps'
@@ -166,7 +166,8 @@ number of clients: 8
 tps = 9486.919903 (without initial connection time)
 ```
 
-100-900 клиентов
+**100-900 клиентов**
+
 ```python
 for i in 100 200 300 400 500 600 700 800 900; do pgbench -c $i -j 4 -T 10 -f ~/workload.sql -U postgres -h localhost -p 6432 thai -n | grep -E 'clients|tps'; done
 
@@ -196,4 +197,27 @@ tps = 6800.548392 (without initial connection time)
 
 number of clients: 900
 tps = 6377.178932 (without initial connection time)
+```
+
+
+**Тест pgbench зависает после 900 подключений - не хватает доступных файлов**
+
+
+```python
+systemctl edit pgbouncer
+
+[Service]
+LimitNOFILE=8192
+
+systemctl restart pgbouncer
+
+```
+
+**1000 клиентов**
+```python
+
+pgbench -c 1000 -j 4 -T 10 -f ~/workload.sql -U postgres -h localhost -p 6432 thai -n | grep -E 'clients|tps';
+
+number of clients: 1000
+tps = 5864.708227 (without initial connection time)
 ```
