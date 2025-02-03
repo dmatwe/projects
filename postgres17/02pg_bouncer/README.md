@@ -87,6 +87,8 @@ sudo systemctl status pgbouncer
 **Настройка PG BOUNCER**
 
 ```python
+sudo systemctl stop pgbouncer
+
 cat > temp.cfg << EOF
 [databases]
 thai = host=127.0.0.1 port=5432 dbname=thai
@@ -103,6 +105,8 @@ max_client_conn = 2000
 EOF
 
 cat temp.cfg | sudo tee -a /etc/pgbouncer/pgbouncer.ini
+
+sudo systemctl start pgbouncer
 ```
 
 
@@ -125,16 +129,17 @@ sudo -u postgres psql -c "select usename,passwd from pg_shadow;"
 psql -Atc "SELECT concat('\"', usename, '\" \"', passwd, '\"') FROM pg_shadow ORDER BY 1" > /etc/pgbouncer/userlist.txt
 
 cat /etc/pgbouncer/userlist.txt 
-"adb" "SCRAM-SHA-256$4096:YnTY9qulDsylCCwOTkc1Gw==$xo/QufctB6s9ii4JZGN97BVQfP44TZETjBYrFBf3UfY=:Me5GqN7IbY0clwYd9Ar9sGAZpX9z6xac8i1kip9kT00="
-"app" "SCRAM-SHA-256$4096:90OXwg1yBMiB4rwNJAkItw==$ArHlYLwiM+O5c69Hwv/It28TMQMVRUM57DVTfLc8Dm4=:cyxHdNH9G/kIe2pJ9phbzZHpCeYLBSTBup+f7klLCcA="
-"postgres" "SCRAM-SHA-256$4096:wUtAnRPLU093IF8y0tN78Q==$h4m4La/vtS592W/TEcclZkQZ4L7bUz9ObCsijMRGGD0=:83GlZu+i1qP69V3wCLwfYNXLSeMM9JvhSj9rLjjKjF4="
+"admindb" "SCRAM-SHA-256$4096:o8lWjbVbS2jCPFoPh3pTvA==$OjABRU3Q9PhlM/djkTkNu71nUrKxlpUAzOycRf4oV5Y=:9h49FR8YqU3Ow4Extgchd6dLIZYidhOBb4qFRb2gTgU="
+"admindb2" "md5a1edc6f635a68ce9926870fe752e8f2b"
+"postgres" "SCRAM-SHA-256$4096:Ihs5xvNd8XlMh6YH7aJvCw==$P49fBjk49SQwuhEXr4OGQ8ihBXa5KfW8WhZEwZNdyhE=:QQgo78QoT9cZ7DM5J6dYRN9Vqy69rbxbEdK7qRZ7iGQ="
+"postgres2" "SCRAM-SHA-256$4096:BiidMf8CW3agL/guI851CA==$XkaptGJbAkIy8S8oB238zWBjTeVY3XhOIiox8mooVyM=:B+DWfpChK+FJpuiGamLxkx98u62vV2+sfP7OBcNbAaA="
 ```
 
 **Создание файла .pgpass для подключения без запроса пароля**
 
 ```python
-echo "localhost:5432:thai:postgres:123" > ~/.pgpass
-echo "localhost:6432:thai:postgres:123" >> ~/.pgpass
+echo "localhost:5432:thai:postgres:admin123#" > ~/.pgpass
+echo "localhost:6432:thai:postgres:admin123#" >> ~/.pgpass
 chmod 0600 ~/.pgpass
 
 psql -h localhost -d thai
@@ -143,12 +148,15 @@ psql -h localhost -d thai
 
 **Тестирование нагрузки pgbouncer**
 
+Запускаем
+
 ```python
 sudo systemctl start pgbouncer
 
 sudo systemctl status pgbouncer
 
 ```
+8 клиентов
 
 ```python
 pgbench -c 8 -j 4 -T 10 -f ~/workload.sql -U postgres -h localhost -p 6432 thai -n | grep -E 'clients|tps'
@@ -158,11 +166,34 @@ number of clients: 8
 tps = 9486.919903 (without initial connection time)
 ```
 
-
+100-900 клиентов
 ```python
-for i in 100 200 300 400 500 600 700 800 900 1000; do
-pgbench -c $i -j 4 -T 10 -f ~/workload.sql -U postgres -h localhost -p 6432 thai -n | grep -E 'clients|tps'
-done
+for i in 100 200 300 400 500 600 700 800 900; do pgbench -c $i -j 4 -T 10 -f ~/workload.sql -U postgres -h localhost -p 6432 thai -n | grep -E 'clients|tps'; done
+
+number of clients: 100
+tps = 8663.629282 (without initial connection time)
+
+number of clients: 200
+tps = 8603.703739 (without initial connection time)
+
+number of clients: 300
+tps = 8416.367568 (without initial connection time)
+
+number of clients: 400
+tps = 8089.888848 (without initial connection time)
+
+number of clients: 500
+tps = 7555.908321 (without initial connection time)
+
+number of clients: 600
+tps = 7277.903774 (without initial connection time)
+
+number of clients: 700
+tps = 7210.155776 (without initial connection time)
+
+number of clients: 800
+tps = 6800.548392 (without initial connection time)
+
+number of clients: 900
+tps = 6377.178932 (without initial connection time)
 ```
-
-
