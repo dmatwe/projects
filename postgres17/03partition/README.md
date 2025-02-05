@@ -4,7 +4,7 @@
 
 ***Ресурсы:***
 
-![Image alt](https://github.com/dmatwe/projects/blob/main/postgres17/01deploy/Screenshot%202025-01-29%20at%2014.13.02.png)
+![Image alt](https://github.com/dmatwe/projects/blob/main/postgres17/03partition/img/Screenshot%202025-02-05%20at%2012.07.12.png)
 
 3 SSD / 20 GB
 
