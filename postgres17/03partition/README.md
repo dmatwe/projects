@@ -37,189 +37,245 @@ wget https://storage.googleapis.com/thaibus/thai_small.tar.gz && tar -xf thai_sm
 
 psql -d thai
 ```
-
-**Скрипт для тестирования нагрузки**
-Скрипт создает SQL-файл, который будет выполнять выборку случайной записи из таблицы book.tickets, используя случайное значение для id.
+**Создание таблицы tickets для партиционирования**
 
 ```python
-cat > ~/workload.sql << EOL
+CREATE TABLE book.tickets_p (
+    id BIGINT NOT NULL,
+    fkride INTEGER,
+    fio TEXT,
+    contact JSONB,
+    fkseat INTEGER,
+    PRIMARY KEY (id, fkride) -- Комбинированный ключ, если нужно
+) PARTITION BY RANGE (fkride);
+```
+**Создание 10 партиций для tickets**
 
-\set r random(1, 5000000)
+```python
+DO $$
+DECLARE
+    v_min_fkride INTEGER;
+    v_max_fkride INTEGER;
+    v_range_size INTEGER;
+BEGIN
+    -- Получаем минимальное и максимальное значения fkride
+    SELECT MIN(fkride), MAX(fkride) INTO v_min_fkride, v_max_fkride FROM book.tickets;
 
-SELECT id, fkRide, fio, contact, fkSeat FROM book.tickets WHERE id = :r;
+    -- Рассчитываем размер диапазона для каждой партиции
+    v_range_size := (v_max_fkride - v_min_fkride + 1) / 10;
 
-EOL
+    -- Создаем 10 партиций
+    FOR i IN 0..9 LOOP
+        EXECUTE format('
+            CREATE TABLE book.tickets_part_%s PARTITION OF book.tickets_p 
+            FOR VALUES FROM (%s) TO (%s)', 
+            i, 
+            v_min_fkride + i * v_range_size, 
+            v_min_fkride + (i + 1) * v_range_size
+        );
+    END LOOP;
+END $$;
+```
+
+**INSERT Данных в tickets_p**
+
+```python
+insert into book.tickets_p select * from book.tickets;
+
+INSERT 0 5185505
 ```
 
 
-Команда запускает нагрузочное тестирование базы данных PostgreSQL, используя 8 клиентских соединений и 4 потока, выполняя SQL-запросы из файла /workload.sql в течение 10 секунд. Тест выполняется от имени пользователя postgres и направлен на базу данных thai.
+**Создание таблицы ride для партиционирования**
 
 ```python
-/usr/lib/postgresql/17/bin/pgbench -c 8 -j 4 -T 10 -f ~/workload.sql -n -U postgres thai
+CREATE TABLE book.ride_p (
+    id SERIAL,
+    startdate date,
+    fkbus integer,
+    fkschedule integer
+) PARTITION BY LIST (startdate);
 ```
 
-**Результат**
-
+**Создание 100 партиций для ride**
 ```python
-pgbench (17.2 (Ubuntu 17.2-1.pgdg24.04+1))
-transaction type: /var/lib/postgresql/workload.sql
-scaling factor: 1
-query mode: simple
-number of clients: 8
-number of threads: 4
-maximum number of tries: 1
-duration: 10 s
-number of transactions actually processed: 201392
-number of failed transactions: 0 (0.000%)
-latency average = 0.397 ms
-initial connection time = 15.553 ms
-tps = 20169.280465 (without initial connection time)
+thai=# select min(startdate), max(startdate), count(distinct(startdate)) from book.ride;
+    min     |    max     | count 
+------------+------------+-------
+ 2000-01-01 | 2000-04-09 |   100
+(1 row)
 ```
 
-**Установка PG BOUNCER**
-
 ```python
-exit
-
-sudo DEBIAN_FRONTEND=noninteractive apt install -y pgbouncer
-
-sudo systemctl status pgbouncer
+DO $do$
+DECLARE
+    v_date date;
+BEGIN
+    FOR v_date IN SELECT distinct(startdate) FROM book.ride ORDER BY 1 ASC
+    LOOP
+        EXECUTE format('DROP TABLE IF EXISTS book."ride_part_%s"', v_date);
+        EXECUTE format('CREATE TABLE book."ride_part_%s" PARTITION OF book.ride_p FOR VALUES IN (''%s'')', v_date, v_date);
+    END LOOP;
+END;
+$do$;
 ```
 
-**Настройка PG BOUNCER**
-
+**INSERT в ride**
 ```python
-sudo systemctl stop pgbouncer
-
-cat > temp.cfg << EOF
-[databases]
-thai = host=127.0.0.1 port=5432 dbname=thai
-[pgbouncer]
-logfile = /var/log/postgresql/pgbouncer.log
-pidfile = /var/run/postgresql/pgbouncer.pid
-listen_addr = *
-listen_port = 6432
-#auth_type = md5
-auth_type = scram-sha-256
-auth_file = /etc/pgbouncer/userlist.txt
-admin_users = admindb
-max_client_conn = 2000
-EOF
-
-cat temp.cfg | sudo tee -a /etc/pgbouncer/pgbouncer.ini
-
-sudo systemctl start pgbouncer
+insert into book.ride_p select * from book.ride;
+INSERT 0 144000
 ```
 
 
-**Создание пользователей**
+**Переименовываем таблицы**
+
 
 ```python
-sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'admin123#';";
-sudo -u postgres psql -c "create user postgres2 with password 'admin123#';";
-sudo -u postgres psql -c "create user admindb with password 'admin123#';";
-sudo -u postgres psql -c "create user admindb2 with password 'md5a1edc6f635a68ce9926870fe752e8f2b';";
+alter table book.ride rename to ride_no_parts;
 
-sudo -u postgres psql -c "select usename,passwd from pg_shadow;"
+alter table book.ride_p rename to ride;
+
+alter table book.tickets rename to tickets_no_parts;
+
+alter table book.tickets_p rename to tickets;
+
 ```
 
 
 
-**Подготовка файла с пользователями для pgbouncer**
+
+
+**EXPLAIN ANALYZE Без партиций**
 
 ```python
-psql -Atc "SELECT concat('\"', usename, '\" \"', passwd, '\"') FROM pg_shadow ORDER BY 1" > /etc/pgbouncer/userlist.txt
-
-cat /etc/pgbouncer/userlist.txt 
-"admindb" "SCRAM-SHA-256$4096:o8lWjbVbS2jCPFoPh3pTvA==$OjABRU3Q9PhlM/djkTkNu71nUrKxlpUAzOycRf4oV5Y=:9h49FR8YqU3Ow4Extgchd6dLIZYidhOBb4qFRb2gTgU="
-"admindb2" "md5a1edc6f635a68ce9926870fe752e8f2b"
-"postgres" "SCRAM-SHA-256$4096:Ihs5xvNd8XlMh6YH7aJvCw==$P49fBjk49SQwuhEXr4OGQ8ihBXa5KfW8WhZEwZNdyhE=:QQgo78QoT9cZ7DM5J6dYRN9Vqy69rbxbEdK7qRZ7iGQ="
-"postgres2" "SCRAM-SHA-256$4096:BiidMf8CW3agL/guI851CA==$XkaptGJbAkIy8S8oB238zWBjTeVY3XhOIiox8mooVyM=:B+DWfpChK+FJpuiGamLxkx98u62vV2+sfP7OBcNbAaA="
-```
-
-**Создание файла .pgpass для подключения без запроса пароля**
-
-```python
-echo "localhost:5432:thai:postgres:admin123#" > ~/.pgpass
-echo "localhost:6432:thai:postgres:admin123#" >> ~/.pgpass
-chmod 0600 ~/.pgpass
-
-psql -h localhost -d thai
-```
-
-
-**Тестирование нагрузки pgbouncer**
-
-Запускаем
-
-```python
-sudo systemctl start pgbouncer
-
-sudo systemctl status pgbouncer
+EXPLAIN ANALYZE SELECT 
+ t.fkride
+ FROM book.tickets_no_parts t
+ WHERE t.id = 5176481;
+                                                           QUERY PLAN                                                            
+---------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using tickets_pkey on tickets_no_parts t  (cost=0.43..2.45 rows=1 width=4) (actual time=0.024..0.026 rows=1 loops=1)
+   Index Cond: (id = 5176481)
+ Planning Time: 0.078 ms
+ Execution Time: 0.041 ms
+(4 rows)
 
 ```
-**8 клиентов**
-
+**EXPLAIN ANALYZE 1 партиция** 
 ```python
-pgbench -c 8 -j 4 -T 10 -f ~/workload.sql -U postgres -h localhost -p 6432 thai -n | grep -E 'clients|tps'
+EXPLAIN ANALYZE SELECT 
+ t.fkride
+ FROM book.tickets_part_0 t
+ WHERE t.id = 5176481;
 
 
-number of clients: 8
-tps = 9486.919903 (without initial connection time)
-```
 
-**100-900 клиентов**
-
-```python
-for i in 100 200 300 400 500 600 700 800 900; do pgbench -c $i -j 4 -T 10 -f ~/workload.sql -U postgres -h localhost -p 6432 thai -n | grep -E 'clients|tps'; done
-
-number of clients: 100
-tps = 8663.629282 (without initial connection time)
-
-number of clients: 200
-tps = 8603.703739 (without initial connection time)
-
-number of clients: 300
-tps = 8416.367568 (without initial connection time)
-
-number of clients: 400
-tps = 8089.888848 (without initial connection time)
-
-number of clients: 500
-tps = 7555.908321 (without initial connection time)
-
-number of clients: 600
-tps = 7277.903774 (without initial connection time)
-
-number of clients: 700
-tps = 7210.155776 (without initial connection time)
-
-number of clients: 800
-tps = 6800.548392 (without initial connection time)
-
-number of clients: 900
-tps = 6377.178932 (without initial connection time)
+                                                                QUERY PLAN                                                                 
+-------------------------------------------------------------------------------------------------------------------------------------------
+ Index Only Scan using tickets_part_0_pkey on tickets_part_0 t  (cost=0.42..1.44 rows=1 width=4) (actual time=0.019..0.020 rows=1 loops=1)
+   Index Cond: (id = 5176481)
+   Heap Fetches: 0
+ Planning Time: 0.069 ms
+ Execution Time: 0.035 ms
+(5 rows)
 ```
 
 
-**Тест pgbench зависает после 900 подключений - не хватает доступных файлов**
-
+**EXPLAIN ANALYZE 10 партиций**
 
 ```python
-systemctl edit pgbouncer
+EXPLAIN ANALYZE SELECT 
+ t.fkride
+ FROM book.tickets t
+ WHERE t.id = 5176481;
 
-[Service]
-LimitNOFILE=8192
-
-systemctl restart pgbouncer
-
+         Heap Fetches: 0
+   ->  Index Only Scan using tickets_part_4_pkey on tickets_part_4 t_5  (cost=0.42..1.44 rows=1 width=4) (actual time=0.020..0.020 rows=0 loops=1)
+         Index Cond: (id = 5176481)
+         Heap Fetches: 0
+   ->  Index Only Scan using tickets_part_5_pkey on tickets_part_5 t_6  (cost=0.42..1.44 rows=1 width=4) (actual time=0.027..0.027 rows=0 loops=1)
+         Index Cond: (id = 5176481)
+         Heap Fetches: 0
+   ->  Index Only Scan using tickets_part_6_pkey on tickets_part_6 t_7  (cost=0.42..1.44 rows=1 width=4) (actual time=0.018..0.018 rows=0 loops=1)
+         Index Cond: (id = 5176481)
+         Heap Fetches: 0
+   ->  Index Only Scan using tickets_part_7_pkey on tickets_part_7 t_8  (cost=0.42..1.44 rows=1 width=4) (actual time=0.018..0.018 rows=0 loops=1)
+         Index Cond: (id = 5176481)
+         Heap Fetches: 0
+   ->  Index Only Scan using tickets_part_8_pkey on tickets_part_8 t_9  (cost=0.42..1.44 rows=1 width=4) (actual time=0.022..0.022 rows=0 loops=1)
+         Index Cond: (id = 5176481)
+         Heap Fetches: 0
+   ->  Index Only Scan using tickets_part_9_pkey on tickets_part_9 t_10  (cost=0.42..1.44 rows=1 width=4) (actual time=0.020..0.020 rows=0 loops=1)
+         Index Cond: (id = 5176481)
+         Heap Fetches: 0
+ Planning Time: 0.763 ms
+ Execution Time: 0.222 ms
 ```
 
-**1000 клиентов**
+**EXPLAIN ANALYZE 100 партиций через join**
+
 ```python
+EXPLAIN ANALYZE SELECT 
+ t.fkride,
+ r.fkbus,
+ r.startdate
+ FROM book.tickets t
+ LEFT JOIN book.ride r ON t.fkride = r.id
+ WHERE t.id = 5176481;
 
-pgbench -c 1000 -j 4 -T 10 -f ~/workload.sql -U postgres -h localhost -p 6432 thai -n | grep -E 'clients|tps';
 
-number of clients: 1000
-tps = 5864.708227 (without initial connection time)
+Nested Loop Left Join  (cost=0.70..1951.95 rows=7200 width=12) (actual time=0.182..1.423 rows=1 loops=1)
+   ->  Append  (cost=0.42..16.95 rows=10 width=4) (actual time=0.084..0.271 rows=1 loops=1)
+         ->  Index Only Scan using tickets_part_0_pkey on tickets_part_0 t_1  (cost=0.42..1.69 rows=1 width=4) (actual time=0.083..0.084 rows=1 loops=1)
+               Index Cond: (id = 5176481)
+               Heap Fetches: 0
+.....
+.....
+         ->  Index Only Scan using tickets_part_8_pkey on tickets_part_8 t_9  (cost=0.42..1.69 rows=1 width=4) (actual time=0.021..0.021 rows=0 loops=1)
+               Index Cond: (id = 5176481)
+               Heap Fetches: 0
+         ->  Index Only Scan using tickets_part_9_pkey on tickets_part_9 t_10  (cost=0.42..1.69 rows=1 width=4) (actual time=0.021..0.021 rows=0 loops=1)
+               Index Cond: (id = 5176481)
+               Heap Fetches: 0
+   ->  Append  (cost=0.28..192.50 rows=100 width=12) (actual time=0.088..1.141 rows=1 loops=1)
+         ->  Index Scan using "ride_part_2000-01-01_id_startdate_key" on "ride_part_2000-01-01" r_1  (cost=0.28..1.92 rows=1 width=12) (actual time=0.010..0.010 rows=0 loops=1)
+
+......
+......
+         ->  Index Scan using "ride_part_2000-04-08_id_startdate_key" on "ride_part_2000-04-08" r_99  (cost=0.28..1.92 rows=1 width=12) (actual time=0.008..0.008 rows=0 loops=1)
+               Index Cond: (id = t.fkride)
+         ->  Index Scan using "ride_part_2000-04-09_id_startdate_key" on "ride_part_2000-04-09" r_100  (cost=0.28..1.92 rows=1 width=12) (actual time=0.010..0.011 rows=0 loops=1)
+               Index Cond: (id = t.fkride)
+ Planning Time: 9.095 ms
+ Execution Time: 2.527 ms
+(235 rows)
 ```
+
+
+
+**EXPLAIN ANALYZE Join без партиций**
+
+```python
+EXPLAIN ANALYZE SELECT 
+ t.fkride,
+ r.fkbus,
+ r.startdate
+ FROM book.tickets_no_parts t
+ LEFT JOIN book.ride_no_parts r ON t.fkride = r.id
+ WHERE t.id = 5176481;
+
+
+
+
+                                                              QUERY PLAN                                                               
+---------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop Left Join  (cost=0.85..5.89 rows=1 width=12) (actual time=2.540..2.542 rows=1 loops=1)
+   ->  Index Scan using tickets_pkey on tickets_no_parts t  (cost=0.43..2.95 rows=1 width=4) (actual time=0.020..0.022 rows=1 loops=1)
+         Index Cond: (id = 5176481)
+   ->  Index Scan using ride_pkey on ride_no_parts r  (cost=0.42..2.94 rows=1 width=12) (actual time=2.515..2.515 rows=1 loops=1)
+         Index Cond: (id = t.fkride)
+ Planning Time: 5.590 ms
+ Execution Time: 2.623 ms
+(7 rows)
+```
+
