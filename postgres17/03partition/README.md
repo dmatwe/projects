@@ -6,7 +6,7 @@
 
 ![Image alt](https://github.com/dmatwe/projects/blob/main/postgres17/03partition/img/Screenshot%202025-02-05%20at%2012.07.12.png)
 
-3 SSD / 20 GB
+3 SSD / 20 / 50 / 70 GB
 
 **Установка Postgres 17**
 
@@ -278,4 +278,93 @@ EXPLAIN ANALYZE SELECT
  Execution Time: 2.623 ms
 (7 rows)
 ```
+
+
+**Скрипты для pg_bench**
+
+```python
+cat > ~/workload_no.sql << EOL
+EXPLAIN ANALYZE SELECT 
+ t.fkride
+ FROM book.tickets_no_parts t
+ WHERE t.id = 5176481;
+EOL
+
+
+cat > ~/workload_1.sql << EOL
+EXPLAIN ANALYZE SELECT 
+ t.fkride
+ FROM book.tickets_part_0 t
+ WHERE t.id = 5176481;
+EOL
+
+cat > ~/workload_all.sql << EOL
+EXPLAIN ANALYZE SELECT 
+ t.fkride
+ FROM book.tickets t
+ WHERE t.id = 5176481;
+EOL
+
+cat > ~/workload_no_join.sql << EOL
+EXPLAIN ANALYZE SELECT 
+ t.fkride,
+ r.fkbus,
+ r.startdate
+ FROM book.tickets_no_parts t
+ LEFT JOIN book.ride_no_parts r ON t.fkride = r.id
+ WHERE t.id = 5176481;
+EOL
+
+cat > ~/workload_100_join.sql << EOL
+EXPLAIN ANALYZE SELECT 
+ t.fkride,
+ r.fkbus,
+ r.startdate
+ FROM book.tickets t
+ LEFT JOIN book.ride r ON t.fkride = r.id
+ WHERE t.id = 5176481;
+EOL
+```
+
+
+```python
+pgbench -c 10 -j 4 -T 10 -f ~/workload_no.sql -p 5432 -U postgres thai -n | grep -E 'transaction|tps'
+
+transaction type: /var/lib/postgresql/workload_no.sql
+number of transactions actually processed: 178561
+number of failed transactions: 0 (0.000%)
+tps = 17877.055484 (without initial connection time)
+
+
+pgbench -c 10 -j 4 -T 10 -f ~/workload_1.sql -p 5432 -U postgres thai -n | grep -E 'transaction|tps'
+
+transaction type: /var/lib/postgresql/workload_1.sql
+number of transactions actually processed: 174568
+number of failed transactions: 0 (0.000%)
+tps = 17474.496423 (without initial connection time)
+
+
+pgbench -c 10 -j 4 -T 10 -f ~/workload_all.sql -p 5432 -U postgres thai -n | grep -E 'transaction|tps'
+
+transaction type: /var/lib/postgresql/workload_all.sql
+number of transactions actually processed: 50906
+number of failed transactions: 0 (0.000%)
+tps = 5093.582292 (without initial connection time)
+
+
+pgbench -c 10 -j 4 -T 10 -f ~/workload_no_join.sql -p 5432 -U postgres thai -n | grep -E 'transaction|tps'
+
+transaction type: /var/lib/postgresql/workload_no_join.sql
+number of transactions actually processed: 81296
+number of failed transactions: 0 (0.000%)
+tps = 8141.977434 (without initial connection time)
+
+pgbench -c 10 -j 4 -T 10 -f ~/workload_100_join.sql -p 5432 -U postgres thai -n | grep -E 'transaction|tps'
+
+transaction type: /var/lib/postgresql/workload_100_join.sql
+number of transactions actually processed: 3032
+number of failed transactions: 0 (0.000%)
+tps = 302.965353 (without initial connection time)
+```
+
 
