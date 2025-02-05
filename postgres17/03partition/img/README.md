@@ -1,4 +1,3 @@
-```python
 # DISCLAIMER - Software and the resulting config files are provided AS IS - IN NO EVENT SHALL
 # BE THE CREATOR LIABLE TO ANY PARTY FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
 # DAMAGES, INCLUDING LOST PROFITS, ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION.
@@ -13,7 +12,7 @@ work_mem = '32 MB'
 maintenance_work_mem = '320 MB'
 huge_pages = off
 effective_cache_size = '1 GB'
-effective_io_concurrency = 100 # concurrent IO only really activated if OS supports posix_fadvise function
+effective_io_concurrency = 200 # concurrent IO only really activated if OS supports posix_fadvise function
 random_page_cost = 1.25 # speed of random disk access relative to sequential access (1.0)
 
 # Monitoring
@@ -59,7 +58,7 @@ enable_partitionwise_aggregate = on
 jit = on
 max_slot_wal_keep_size = '1000 MB'
 track_wal_io_timing = on
-maintenance_io_concurrency = 100
+maintenance_io_concurrency = 200
 wal_recycle = on
 
 
@@ -68,4 +67,3 @@ wal_recycle = on
 #   Consider contacting experts at 
 #   https://www.cybertec-postgresql.com 
 #   for more professional expertise.
-```
